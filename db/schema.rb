@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_034901) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_074301) do
+  create_table "settings", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.string "logo"
+    t.string "ico"
+    t.text "copyright"
+    t.string "email"
+    t.string "skype"
+    t.string "whatsapp"
+    t.string "phone"
+    t.integer "product_per_page"
+    t.integer "post_per_page"
+    t.integer "recommend_per_page"
+    t.text "share_code"
+    t.string "email_user_name"
+    t.string "email_password"
+    t.string "email_port"
+    t.string "email_smtp"
+    t.string "email_receiver"
+    t.string "email_sender"
+    t.boolean "email_active", default: false
+    t.text "ga_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "new_arrive_per_page"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

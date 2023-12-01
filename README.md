@@ -31,3 +31,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+### cmd
+
+create setting 
+
+```
+rails g scaffold setting name url logo ico copyright:text email skype whatsapp phone product_per_page:integer post_per_page:integer recommend_per_page:integer share_code:text email_user_name email_password email_port email_smtp email_receiver email_sender email_active:boolean ga_code:text
+```

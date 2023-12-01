@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   root "home#index"
   scope "(:locale)", locale: /en|zh-CN/ do
     get 'home/index'
+
+    scope :admin do
+      resources :settings, only: [:edit, :update]
+    end 
+
   end
 
 end

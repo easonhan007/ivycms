@@ -1,0 +1,76 @@
+# == Schema Information
+#
+# Table name: settings
+#
+#  id                  :integer          not null, primary key
+#  name                :string
+#  url                 :string
+#  logo                :string
+#  ico                 :string
+#  copyright           :text
+#  email               :string
+#  skype               :string
+#  whatsapp            :string
+#  phone               :string
+#  product_per_page    :integer
+#  post_per_page       :integer
+#  recommend_per_page  :integer
+#  share_code          :text
+#  email_user_name     :string
+#  email_password      :string
+#  email_port          :string
+#  email_smtp          :string
+#  email_receiver      :string
+#  email_sender        :string
+#  email_active        :boolean          default(FALSE)
+#  ga_code             :text
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  new_arrive_per_page :integer
+#
+
+one:
+  name: MyString
+  url: MyString
+  logo: MyString
+  ico: MyString
+  copyright: MyText
+  email: MyString
+  skype: MyString
+  whatsapp: MyString
+  phone: MyString
+  product_per_page: 1
+  post_per_page: 1
+  recommend_per_page: 1
+  share_code: MyText
+  email_user_name: MyString
+  email_password: MyString
+  email_port: MyString
+  email_smtp: MyString
+  email_receiver: MyString
+  email_sender: MyString
+  email_active: false
+  ga_code: MyText
+
+two:
+  name: MyString
+  url: MyString
+  logo: MyString
+  ico: MyString
+  copyright: MyText
+  email: MyString
+  skype: MyString
+  whatsapp: MyString
+  phone: MyString
+  product_per_page: 1
+  post_per_page: 1
+  recommend_per_page: 1
+  share_code: MyText
+  email_user_name: MyString
+  email_password: MyString
+  email_port: MyString
+  email_smtp: MyString
+  email_receiver: MyString
+  email_sender: MyString
+  email_active: false
+  ga_code: MyText

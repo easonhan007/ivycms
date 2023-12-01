@@ -1,0 +1,62 @@
+<%= form_with(model: setting, builder: DaisyFormBuilder) do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+        <% setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3 class="text-lg font-semibold my-2 text-slate-600">
+    <%= t('Basic Information') %>
+  </h3>
+  <div class="my-5 flex justify-start items-baseline">
+    <%= form.label :name, t("Website Name"), class: 'w-1/5' %>
+    <%= form.text_field :name, class: "input input-sm input-bordered w-full max-w-sm" %>
+    <small class="text-sm text-gray-600 p-4"><%= "Your website Name" %></small>
+  </div>
+  <%= form.input :url, label: t("Website URL")  %>
+  <%= form.input :logo, label: t("Website Logo") %>
+  <%= form.input :ico, label: t("Website Icon")%>
+  <%= form.input :copyright, label: t("Copyright") %>
+  <div class="divider my-2"></div>
+
+  <h3 class="text-lg font-semibold my-2 text-slate-600">
+    <%= t('Contact Detail') %>
+  </h3>
+  <%= form.input :email %>
+  <%= form.input :skype %>
+  <%= form.input :whatsapp %>
+  <%= form.input :phone %>
+  <div class="divider my-2"></div>
+
+  <h3 class="text-lg font-semibold my-2 text-slate-600">
+    <%= t('Email Settings') %>
+  </h3>
+  <%= form.input :email_user_name %>
+  <%= form.input :email_password %>
+  <%= form.input :email_port %>
+  <%= form.input :email_smtp %>
+  <%= form.input :email_sender %>
+  <%= form.input :email_receiver %>
+  <%= form.input :email_active %>
+  <div class="divider my-2"></div>
+
+  <h3 class="text-lg font-semibold my-2 text-slate-600">
+    <%= t('Other Settings') %>
+  </h3>
+  <%= form.input :product_per_page %>
+  <%= form.input :post_per_page %>
+  <%= form.input :recommend_per_page %>
+  <%= form.input :new_arrive_per_page %>
+  <%= form.input :ga_code %>
+  <%= form.input :share_code %>
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

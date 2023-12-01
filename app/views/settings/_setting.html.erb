@@ -1,0 +1,112 @@
+<div id="<%= dom_id setting %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= setting.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Url:</strong>
+    <%= setting.url %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Logo:</strong>
+    <%= setting.logo %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Ico:</strong>
+    <%= setting.ico %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Copyright:</strong>
+    <%= setting.copyright %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= setting.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Skype:</strong>
+    <%= setting.skype %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Whatsapp:</strong>
+    <%= setting.whatsapp %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone:</strong>
+    <%= setting.phone %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Product per page:</strong>
+    <%= setting.product_per_page %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Post per page:</strong>
+    <%= setting.post_per_page %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Recommend per page:</strong>
+    <%= setting.recommend_per_page %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Share code:</strong>
+    <%= setting.share_code %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email user name:</strong>
+    <%= setting.email_user_name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email password:</strong>
+    <%= setting.email_password %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email port:</strong>
+    <%= setting.email_port %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email smtp:</strong>
+    <%= setting.email_smtp %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email receiver:</strong>
+    <%= setting.email_receiver %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email sender:</strong>
+    <%= setting.email_sender %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email active:</strong>
+    <%= setting.email_active %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Ga code:</strong>
+    <%= setting.ga_code %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this setting", setting, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this setting", edit_setting_path(setting), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
