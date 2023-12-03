@@ -1,0 +1,22 @@
+<div class="overflow-x-auto my-2">
+  <table class="table table-xs">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th><%= t('Email') %></th>
+        <th><%= t('Created At') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= (time_ago_in_words user.created_at) + t('ago') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </tbody>
+  </table>
+</div>

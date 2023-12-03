@@ -17,7 +17,7 @@
   <div class="my-5 flex justify-start items-baseline">
     <%= form.label :name, t("Website Name"), class: 'w-1/5' %>
     <%= form.text_field :name, class: "input input-sm input-bordered w-full max-w-sm" %>
-    <small class="text-sm text-gray-600 p-4"><%= "Your website Name" %></small>
+    <small class="text-sm text-gray-600 p-4 hidden lg:block"><%= "Your website Name" %></small>
   </div>
   <%= form.input :url, label: t("Website URL")  %>
   <%= form.input :logo, label: t("Website Logo") %>
