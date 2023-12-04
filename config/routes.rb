@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/index'
   devise_for :users, controllers: { registrations: "registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,8 +13,12 @@ Rails.application.routes.draw do
     get 'home/index'
 
     scope :admin do
-      resources :settings, only: [:edit, :update]
       get 'users/index', as: 'users'
+
+      resources :settings, only: [:edit, :update]
+      resources :posts
+      resources :banners
+      resources :friend_links
     end 
 
   end

@@ -17,4 +17,5 @@
 #  updated_at  :datetime         not null
 #
 class PostCategory < Category
+	has_many :posts
 end

@@ -17,10 +17,12 @@
 #  updated_at  :datetime         not null
 #
 class ProductCategory < Category
+  after_save :set_level1_path
+  scope :with_children, ->(path) { where("path like ? and active = ?", "#{path}%", true).order("level ASC").order("sorting ASC") }
 
   def build_children()
     tree = {element: self, children: []}
-    children = ProductCategory.where("path like ?", "#{id}%").order("level ASC").order("sorting ASC")
+    children = ProductCategory.with_children(self[:path])
 
     children.each do |category|
       parent_id = get_parent_id_from(category.path, category.id)  
@@ -62,6 +64,42 @@ class ProductCategory < Category
         end #if
       end #each
     end #while
+  end
+
+  def create_child(**args)
+    child = ProductCategory.new(args)
+    child.level = self[:level] + 1
+    child.transaction do
+      child.save!
+      child.path = "#{self[:id]},#{child.id}"
+      child.save!
+    end
+    child
+  end
+
+  def set_level1_path
+    if self[:level].eql?(1)
+      self[:path] = "#{self[:id]}"
+    end #if
+  end
+
+  def destroy_with_children()
+    with_children = ProductCategory.with_children(self[:path])
+    with_children.destroy_all()
+  end
+
+  def self.build()
+    level1 = ProductCategory.where(level: 1, active: true).order("sorting ASC")
+    categories = []
+    level1.each do |category| 
+      categories << category.build_children()
+    end
+    categories
+  end
+
+  def path_to_category_arr()
+    path_list = self[:path].split(',').map {|p| p.to_i}
+    ProductCategory.where(id: path_list).order('level ASC') 
   end
 
 end

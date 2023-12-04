@@ -1,0 +1,23 @@
+<%= form_with(model: post, builder: DaisyFormBuilder) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.input :post_category, label: t("Category"), collection: PostCategory.all  %>
+  <%= form.input :title, label: t("Title")  %>
+  <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos"  %>
+  <%= form.input :desc, label: t("Description")  %>
+  <%= form.input :image, label: t("Image URL")  %>
+  <%= form.input :content, label: t("Content"), input_html: {rows: 10}  %>
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id            :integer          not null, primary key
+#  title         :string
+#  desc          :string
+#  content       :text
+#  image         :string
+#  display_title :string
+#  category_id   :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+one:
+  title: "Welcom to the company's blog"
+  desc: MyString
+  content: MyText
+  image: MyString
+  display_title: MyString
+  category_id: 777
+
+two:
+  title: "We support worldwide delivery"
+  desc: MyString
+  content: MyText
+  image: MyString
+  display_title: MyString
+  category_id: 777

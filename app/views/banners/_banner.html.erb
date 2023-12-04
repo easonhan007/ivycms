@@ -1,0 +1,22 @@
+<div id="<%= dom_id banner %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Image:</strong>
+    <%= banner.image %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Url:</strong>
+    <%= banner.url %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Sorting:</strong>
+    <%= banner.sorting %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this banner", banner, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this banner", edit_banner_path(banner), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

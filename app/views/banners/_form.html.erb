@@ -1,0 +1,21 @@
+<%= form_with(model: banner, builder: DaisyFormBuilder) do |form| %>
+  <% if banner.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+
+      <ul>
+        <% banner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :image, label: t("Image URL") %>
+  <%= form.input :url, label: t("Landing URL") %>
+  <%= form.input :sorting, label: t("Sorting") %>
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

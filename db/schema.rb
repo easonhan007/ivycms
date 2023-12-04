@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_02_123013) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_104708) do
+  create_table "banners", force: :cascade do |t|
+    t.string "image"
+    t.string "url"
+    t.integer "sorting", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.integer "level", default: 1
     t.string "path"
@@ -24,6 +32,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_02_123013) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friend_links", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.integer "sorting", default: 1
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "desc"
+    t.text "content"
+    t.string "image"
+    t.string "display_title"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
   create_table "settings", force: :cascade do |t|

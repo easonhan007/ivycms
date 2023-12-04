@@ -1,0 +1,22 @@
+<%= form_with(model: friend_link, class: "contents") do |form| %>
+  <% if friend_link.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(friend_link.errors.count, "error") %> prohibited this friend_link from being saved:</h2>
+
+      <ul>
+        <% friend_link.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :name, label: t("Name") %>
+  <%= form.input :url, label: t("URL") %>
+  <%= form.input :sorting, label: t("Sorting") %>
+  <%= form.input :image, label: t("Image URL") %>
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

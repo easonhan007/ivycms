@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: banners
+#
+#  id         :integer          not null, primary key
+#  image      :string
+#  url        :string
+#  sorting    :integer          default(1)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  image: MyString
+  url: MyString
+  sorting: 1
+
+two:
+  image: MyString
+  url: MyString
+  sorting: 1

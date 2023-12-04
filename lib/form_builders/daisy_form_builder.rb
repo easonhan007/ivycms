@@ -34,13 +34,13 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def hint_text(text)
     return if text.nil?
-    tag.small text, class: "text-sm text-gray-600"
+    tag.small text, class: "text-sm text-gray-600 p-4 hidden lg:block"
   end
 
   def error_text(method)
     return unless has_error?(method)
 
-    tag.div(@object.errors[method].join("<br />").html_safe, class: "text-sm text-red-500")
+    tag.div(@object.errors[method].join("<br />").html_safe, class: "text-sm text-red-500 p-4 hidden lg:block")
   end
 
   def object_type_for_method(method)
@@ -114,7 +114,12 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
     multiple = input_options[:multiple]
 
     collection_input(method, options) do
-      collection_select(method, options[:collection], value_method, text_method, options, merge_input_options({class: "#{"select" unless multiple} #{size_string} #{"select-error" if has_error?(method)}"}, options[:input_html]))
+      collection_select(method, 
+        options[:collection], 
+        value_method, 
+        text_method, 
+        options, merge_input_options({class: "#{"select select-bordered" unless multiple} #{size_string} #{"select-error" if has_error?(method)}"}, 
+        options[:input_html]))
     end
   end
 

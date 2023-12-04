@@ -16,7 +16,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the
 # model remove the "{}" from the fixture names and add the columns immediately
@@ -59,7 +58,7 @@ iphone14pro:
 iphone14max:
   id: 6
   level: 3
-  path: "1,2,5"
+  path: "1,2,6"
   name: "iPhone 14 max"
   type: "ProductCategory"
   sorting: 2
