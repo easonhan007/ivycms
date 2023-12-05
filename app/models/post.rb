@@ -14,6 +14,7 @@
 #
 class Post < ApplicationRecord
 	belongs_to :post_category, class_name: 'PostCategory', foreign_key: :category_id
+	has_rich_text :content
 
 	validates :title, presence: true
 end

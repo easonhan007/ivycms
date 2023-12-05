@@ -133,9 +133,9 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
   def file_input(method, options = {})
     form_group(method, options) do
       safe_join [
-        (label(method, options[:label]) unless options[:label] == false),
+        (label(method, options[:label], class: label_size_string) unless options[:label] == false),
         # custom_file_field(method, options),
-        file_field(method, options.merge(class: "file-input file-input-bordered #{size_string}")),
+        file_field(method, options.merge(class: "file-input file-input-sm file-input-bordered #{size_string}")),
       ]
     end
   end

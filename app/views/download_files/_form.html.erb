@@ -1,0 +1,22 @@
+<%= form_with(model: download_file, builder: DaisyFormBuilder) do |form| %>
+  <% if download_file.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(download_file.errors.count, "error") %> prohibited this download_file from being saved:</h2>
+
+      <ul>
+        <% download_file.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input "name" %>
+  <%= form.input "desc" %>
+  <%= form.input "sorting" %>
+  <%= form.input "content", as: 'file' %>
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

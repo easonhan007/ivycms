@@ -1,0 +1,22 @@
+<div id="<%= dom_id download_file %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= download_file.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Desc:</strong>
+    <%= download_file.desc %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Content:</strong>
+    <%= link_to download_file.content.filename, download_file.content if download_file.content.attached? %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this download file", download_file, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this download file", edit_download_file_path(download_file), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
