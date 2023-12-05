@@ -1,0 +1,13 @@
+<button class="link link-error" onclick="document.querySelector('#confirm_modal_<%=dom_id(action_obj)%>').showModal()"><%= action_text %></button>
+<dialog id="confirm_modal_<%= dom_id(action_obj)%>" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+	<h3 class="text-lg font-semibold"><%= t('Are you sure to ')%><%= action_text %>?</h3>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+		<%= action_link %>
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>

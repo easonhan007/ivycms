@@ -1,0 +1,13 @@
+<button class="btn btn-primary"  onclick="document.querySelector('#new_friend_link').showModal()">
+  <%= t('New Friend Link')%>
+</button>
+<dialog id="new_friend_link" class="modal">
+  <div class="modal-box">
+    <h1 class="font-bold text-lg">New friend link</h1>
+    <%= render "form", friend_link: @friend_link do %>
+    <% end %>
+    
+  </div>
+</dialog>
+
+

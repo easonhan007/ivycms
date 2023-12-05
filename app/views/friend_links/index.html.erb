@@ -1,14 +1,48 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<div class="overflow-x-auto m-2">
+  <%= link_to t('New Friend Link'), new_friend_link_path, class: "btn btn-primary my-2 btn-sm" %>
+  <table class="table table-md">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th><%= t('Name') %></th>
+        <th><%= t('URL') %></th>
+        <th><%= t('Sorting') %></th>
+        <th><%= t('Image') %></th>
+        <th><%= t('Created At') %></th>
+        <th><%= t('Updated At') %></th>
+        <th><%= t('Operation') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friend_links.each do |link| %>
+        <tr>
+          <td><%= link.id %></td>
+            <td>
+            <%= turbo_frame_tag 'view' do %>
+              <%= link_to link.name, 
+                show_modal_friend_link_path(link), 
+                class: "link link-primary", 
+                data: {turbo_frame: dom_id(link)} %>
+            <% end %>
+            </td>
+          <td><%= link_to link.url, link.url, class: "link link-primary" %></td>
+          <td><%= link.sorting %></td>
+          <td><%= link.image %></td>
+          <td><%= time_ago_in_words link.created_at %> <%= t('ago')%></td>
+          <td><%= time_ago_in_words link.updated_at %> <%= t('ago')%></td>
+          <td> <%= link_to t('Edit'), edit_friend_link_path(link), class: 'link link-info' %> </td>  
+          <td><%= render partial: 'admin/confirm_modal', 
+            locals: {
+              action_text: t('Delete'), 
+              action_obj: link, 
+              action_link: link_to(t('Yes'), friend_link_path(link), class: "btn btn-error", data: {turbo_method: 'delete'})}%>
+          </td>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Friend links</h1>
-    <%= link_to "New friend link", new_friend_link_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="friend_links" class="min-w-full">
-    <%= render @friend_links %>
-  </div>
+        </tr>
+        <%= turbo_frame_tag dom_id(link) do %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>

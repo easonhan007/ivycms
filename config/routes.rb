@@ -18,8 +18,13 @@ Rails.application.routes.draw do
       resources :settings, only: [:edit, :update]
       resources :posts
       resources :banners
-      resources :friend_links
-    end 
+      resources :friend_links do
+        member do 
+          get 'show_modal'
+        end 
+      end
+
+    end #admin
 
   end
 

@@ -30,3 +30,11 @@ if Setting.count < 1
 		new_arrive_per_page: 8,
 	)
 end
+
+if Rails.env.development?
+	puts "Creating friend links"
+	FriendLink.find_or_create_by(name: 'Amazon', url: 'https://www.amazon.com/', sorting: 1)
+	FriendLink.find_or_create_by(name: 'Walmart', url: 'https://www.walmart.com/', sorting: 2)
+	FriendLink.find_or_create_by(name: 'Amazon UK', url: 'https://www.amazon.co.uk/', sorting: 3)
+	FriendLink.find_or_create_by(name: 'Shopify', url: 'https://www.shopify.com', sorting: 4)
+end #if

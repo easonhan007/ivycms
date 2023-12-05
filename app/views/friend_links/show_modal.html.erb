@@ -1,0 +1,41 @@
+<%= turbo_frame_tag dom_id(@friend_link) do %>
+<dialog id="<%= "modal_#{dom_id(@friend_link)}" %>" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div>
+      <form method="dialog">
+		<div class="my-4 flex justify-start">
+			<strong class="block font-medium w-1/3"><%= t('Name')%>:</strong>
+			<p class="w-2/3"> <%= @friend_link.name %> </p>
+		</div>
+
+		<div class="my-4 flex justify-start">
+			<strong class="block font-medium w-1/3">URL:</strong>
+			<p class="w-2/3"> <%= @friend_link.url %> </p>
+		</div>
+
+		<div class="my-4 flex justify-start">
+			<strong class="block font-medium w-1/3"><%= t('Sorting')%>:</strong>
+			<p class="w-2/3"> <%= @friend_link.sorting %> </p>
+		</div>
+
+		<div class="my-4 flex justify-start">
+			<strong class="block font-medium w-1/3"><%= t('Image')%>:</strong>
+			<p class="w-2/3"> <%= @friend_link.image %> </p>
+		</div>
+
+		<div class="my-4 flex justify-start">
+			<strong class="block font-medium w-1/3"><%= t('Create At')%>:</strong>
+			<p class="w-2/3"> <%= @friend_link.created_at %> </p>
+		</div>
+		<div class="modal-action">
+	        <button class="btn">Close</button>
+		</div>
+      </form>
+    </div>
+  </div>
+  <script>
+	document.querySelector("#modal_<%= dom_id(@friend_link) %>").showModal();
+  </script>
+</dialog>
+
+<% end %>
