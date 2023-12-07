@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_05_103458) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_07_091842) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -99,6 +99,27 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_103458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "meta_title"
+    t.string "name"
+    t.string "key"
+    t.string "desc"
+    t.text "specs"
+    t.string "model_string"
+    t.text "content"
+    t.string "price"
+    t.string "url"
+    t.boolean "new_arrive", default: true
+    t.integer "sorting", default: 1
+    t.integer "hot", default: 1
+    t.boolean "active", default: true
+    t.boolean "recommend", default: true
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "settings", force: :cascade do |t|

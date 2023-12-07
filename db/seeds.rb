@@ -37,4 +37,25 @@ if Rails.env.development?
 	FriendLink.find_or_create_by(name: 'Walmart', url: 'https://www.walmart.com/', sorting: 2)
 	FriendLink.find_or_create_by(name: 'Amazon UK', url: 'https://www.amazon.co.uk/', sorting: 3)
 	FriendLink.find_or_create_by(name: 'Shopify', url: 'https://www.shopify.com', sorting: 4)
+
+	puts "Creating Product Category"
+	level2 = {
+		Computer: ['CPU', 'Memery', 'Hard Dick'],
+		Mobile: ['iPhone Se3', 'Phone 13', 'iPhone 13 pro', 'iPhone 14', 'iPhone 14 Pro Max'],
+		Accessories: ['Mouse', 'Keyboard', 'Charger']
+	}
+	%w(Computer Mobile Speaker Accessories).each_with_index do |cname, index|
+		c = ProductCategory.find_or_create_by(name: cname, sorting: index+1, level: 1)
+		c.path = "#{c.id}"
+		c.save
+		if not c.has_children?
+			sym_c = c.name.to_sym
+			if level2.key?(sym_c)
+				level2[sym_c].each_with_index do |l2_c, index|
+					c.create_child(name: l2_c, sorting: index+1)
+				end #each
+			end #if
+		end 
+	end 
+	
 end #if

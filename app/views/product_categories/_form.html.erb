@@ -1,0 +1,27 @@
+<%= form_with(model: product_category, builder: DaisyFormBuilder) do |form| %>
+  <% if product_category.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(product_category.errors.count, "error") %> prohibited this product category from being saved:</h2>
+
+      <ul>
+        <% product_category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :parent_id %>
+  <%= form.input :name, label: t("Name") %>
+  <%= form.input :key, label: t("key") %>
+  <%= form.input :description, label: t("Description") %>
+  <%= form.input :image, label: t("Image URL") %>
+  <%= form.input :url, label: t("URL") %>
+  <%= form.input :sorting, label: t("Sorting") %>
+  <%= form.input :active, label: t("Active") %>
+
+
+  <div class="my-5">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :download_files
+  resources :products
   devise_for :users, controllers: { registrations: "registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,7 +18,17 @@ Rails.application.routes.draw do
 
       resources :settings, only: [:edit, :update]
       resources :posts
+      resources :download_files
       resources :banners
+
+      resources :product_categories do
+        member do
+          get 'new_a_child'
+          get 'show_modal'
+          post 'toggle_status'
+        end
+      end
+
       resources :friend_links do
         member do 
           get 'show_modal'

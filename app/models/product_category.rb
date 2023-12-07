@@ -17,23 +17,35 @@
 #  updated_at  :datetime         not null
 #
 class ProductCategory < Category
+  attribute :parent_id, :integer
+  attr_accessor :nodes
   after_save :set_level1_path
-  scope :with_children, ->(path) { where("path like ? and active = ?", "#{path}%", true).order("level ASC").order("sorting ASC") }
+  scope :with_children, ->(path) { where("path like ? ", "#{path}%").where(active: true).order("level ASC").order("sorting ASC") }
 
-  def build_children()
-    tree = {element: self, children: []}
-    children = ProductCategory.with_children(self[:path])
+  def build_tree(ignore_status=false)
+    if ignore_status
+      children = ProductCategory.with_children(self[:path]).unscope(where: :active)
+    else
+      children = ProductCategory.with_children(self[:path])
+    end
 
+    last_level_elements = {}
+    last_level_elements[self[:id]] = self 
     children.each do |category|
-      parent_id = get_parent_id_from(category.path, category.id)  
-      if parent_id.eql?(self[:id])
-        tree[:children] << {element: category, children: []}
-      else
-        insert_to_tree(tree, category, parent_id)
+      parent_id = get_parent_id_from(category.path, category.id)
+      parent = last_level_elements[parent_id]
+      if not parent
+        next 
       end
+      if parent.nodes 
+        parent.nodes << category
+      else
+        parent.nodes = [category]
+      end
+      last_level_elements[category.id] = category
     end #each
-    tree
-  end #children
+    self
+  end
 
   def get_parent_id_from(path, cid)
     seq = path.split(',')
@@ -53,25 +65,13 @@ class ProductCategory < Category
     return seq[parent].to_i
   end
 
-  def insert_to_tree(tree, category, parent_id)
-    while not tree[:children].empty?
-      tree[:children].each do |child|
-        if child[:element].id.eql?(parent_id)
-          child[:children] << {element: category, children: []}
-          return 
-        else
-          return insert_to_tree(child, category, parent_id)
-        end #if
-      end #each
-    end #while
-  end
-
   def create_child(**args)
     child = ProductCategory.new(args)
     child.level = self[:level] + 1
+    child.active = self[:active]
     child.transaction do
       child.save!
-      child.path = "#{self[:id]},#{child.id}"
+      child.path = "#{self[:path]},#{child.id}"
       child.save!
     end
     child
@@ -84,15 +84,43 @@ class ProductCategory < Category
   end
 
   def destroy_with_children()
+    with_children = ProductCategory.with_children(self[:path]).unscope(where: :active)
+    self.transaction do
+      with_children.each do |c|
+        c.destroy!
+      end #each
+      if not self.destroyed?
+        self.destroy!
+      end
+    end 
+  end
+
+  def inactive_with_children()
     with_children = ProductCategory.with_children(self[:path])
-    with_children.destroy_all()
+    with_children.update_all(active: false)
+    self.update(active: false)
+  end
+
+  def active_with_children()
+    with_children = ProductCategory.with_children(self[:path]).unscope(where: :active)
+    with_children.update_all(active: true)
+    self.update(active: true)
   end
 
   def self.build()
     level1 = ProductCategory.where(level: 1, active: true).order("sorting ASC")
     categories = []
     level1.each do |category| 
-      categories << category.build_children()
+      categories << category.build_tree()
+    end
+    categories
+  end
+
+  def self.build_ignore_status()
+    level1 = ProductCategory.where(level: 1).order("sorting ASC")
+    categories = []
+    level1.each do |category| 
+      categories << category.build_tree(true)
     end
     categories
   end
@@ -100,6 +128,15 @@ class ProductCategory < Category
   def path_to_category_arr()
     path_list = self[:path].split(',').map {|p| p.to_i}
     ProductCategory.where(id: path_list).order('level ASC') 
+  end
+
+  def has_children?()
+    ProductCategory.with_children(self[:path]).size > 1
+  end
+
+  def full_path_text
+    categories = path_to_category_arr.map {|c| c.name }
+    categories.join(" -> ")
   end
 
 end

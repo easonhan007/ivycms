@@ -1,0 +1,55 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id           :integer          not null, primary key
+#  meta_title   :string
+#  name         :string
+#  key          :string
+#  desc         :string
+#  specs        :text
+#  model_string :string
+#  content      :text
+#  price        :string
+#  url          :string
+#  new_arrive   :boolean          default(TRUE)
+#  sorting      :integer          default(1)
+#  hot          :integer          default(1)
+#  active       :boolean          default(TRUE)
+#  recommend    :boolean          default(TRUE)
+#  category_id  :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  meta_title: MyString
+  name: MyString
+  key: MyString
+  desc: MyString
+  specs: MyText
+  model_string: MyString
+  content: MyText
+  price: MyString
+  url: MyString
+  new_arrive: false
+  sorting: 1
+  hot: 1
+  active: false
+  category_id: 1
+
+two:
+  meta_title: MyString
+  name: MyString
+  key: MyString
+  desc: MyString
+  specs: MyText
+  model_string: MyString
+  content: MyText
+  price: MyString
+  url: MyString
+  new_arrive: false
+  sorting: 1
+  hot: 1
+  active: false
+  category_id: 1
