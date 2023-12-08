@@ -1,0 +1,9 @@
+<div class="card card-compact bg-base-100 shadow-xl" id="<%= dom_id image%>">
+  <figure> <%= image_tag image.content, class: "h-72", alt: image.alt %> </figure>
+  <div class="card-body">
+    <h2 class="card-title"><%= image.alt%></h2>
+    <div class="card-actions justify-end">
+      <%= link_to t("Delete"), image_path(image), class: "btn btn-error", data: {turbo_method: "delete"}%>
+    </div>
+  </div>
+</div>

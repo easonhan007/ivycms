@@ -118,7 +118,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
         options[:collection], 
         value_method, 
         text_method, 
-        options, merge_input_options({class: "#{"select select-bordered" unless multiple} #{size_string} #{"select-error" if has_error?(method)}"}, 
+        options, merge_input_options({class: "#{"select select-bordered select-sm" unless multiple} #{size_string} #{"select-error" if has_error?(method)}"}, 
         options[:input_html]))
     end
   end

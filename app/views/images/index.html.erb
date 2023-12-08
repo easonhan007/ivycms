@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "new_image" do %>
+<div class="w-full p-4">
+
+  <div class="w-full lg:w-1/2 my-4">
+    <%= render partial: "form", locals: {image: @image }%>
+  </div>
+
+  <div id="images" class="min-w-full grid grid-flow-row sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid_cols-5 gap-8">
+    <%= render @images %>
+  </div>
+</div>
+
+<% end %>

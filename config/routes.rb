@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :products
   devise_for :users, controllers: { registrations: "registrations" }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -20,6 +19,8 @@ Rails.application.routes.draw do
       resources :posts
       resources :download_files
       resources :banners
+      resources :images
+      resources :products
 
       resources :product_categories do
         member do

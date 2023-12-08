@@ -19,7 +19,7 @@
           <td><%= file.id %></td>
           <td><%= file.name %> </td>
           <td><%= file.sorting %></td>
-          <td><%= link_to t('Download'), file.content, class: 'link link-primary' if file.content.attached? %></td>
+          <td><%= link_to t('Download'), file.content, class: 'link link-primary', title: polymorphic_url(file.content) if file.content.attached? %></td>
           <td><%= time_ago_in_words file.created_at %> <%= t('ago')%></td>
           <td><%= time_ago_in_words file.updated_at %> <%= t('ago')%></td>
           <td> <%= link_to t('Edit'), edit_download_file_path(file), class: 'link link-info' %> </td>  
