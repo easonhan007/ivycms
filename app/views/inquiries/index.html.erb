@@ -1,0 +1,30 @@
+<div class="overflow-x-auto m-2">
+  <%= link_to t('New test inquiry'), new_inquiry_path, class: "btn btn-primary my-2 btn-sm"%>
+  <table class="table table-md my-4">
+    <thead>
+      <tr>
+        <th><%= t('Name') %></th>
+        <th><%= t('Email') %></th>
+        <th><%= t('Phone') %></th>
+        <th>IP</th>
+        <th><%= t('Content') %></th>
+        <th><%= t('Created At') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inquiries.each do |inquiry| %>
+        <tr>
+          <td><%=  inquiry.name %></td>
+          <td><%=  inquiry.email %></td>
+          <td><%=  inquiry.phone %></td>
+          <td><%=  inquiry.ip %></td>
+          <td title="<%= inquiry.content %>"><%=  inquiry.content.truncate(50) %></td>
+          <td><%= time_ago_in_words inquiry.created_at %> <%= t('ago')%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="flex justify-center">
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>

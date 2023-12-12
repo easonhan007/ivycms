@@ -19,8 +19,24 @@ Rails.application.routes.draw do
       resources :posts
       resources :download_files
       resources :banners
-      resources :images
-      resources :products
+      resources :inquiries
+      resources :post_categories
+
+      resources :images do
+        collection do
+          post 'create_from_product'
+        end
+        
+        member do
+          delete 'remove_from_product'
+        end
+      end
+
+      resources :products do
+        collection do
+          get 'add_an_image'
+        end
+      end
 
       resources :product_categories do
         member do

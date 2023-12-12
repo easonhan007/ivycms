@@ -9,6 +9,25 @@
 #
 class Image < ApplicationRecord
   has_one_attached :content
+  attr_accessor :seq
 
-  validates :content, presence: true
+  # validates :content, presence: true
+
+  validate :correct_content_mime_type
+
+  private
+
+  def correct_content_mime_type
+    Rails.logger.warn(content.content_type)
+    if content.attached? && !content.content_type.in?(%w(image/png image/jpeg image/gif))
+      errors.add(:content, 'Must be a PDF or a DOC file')
+    end
+  end
+
+  def self.find_from(signed_ids)
+    blobs = signed_ids.map {|signed_id| ActiveStorage::Blob.find_signed(signed_id)}.compact()
+    image_ids = blobs.map {|blob| blob.attachments.first}.pluck(:record_id)
+    Image.find(image_ids)
+  end
+
 end

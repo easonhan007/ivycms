@@ -15,7 +15,10 @@
 #  active      :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  content     :text
 #
 class PostCategory < Category
 	has_many :posts
+	has_rich_text :content
+
 end

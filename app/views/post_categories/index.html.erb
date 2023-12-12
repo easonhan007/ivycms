@@ -1,0 +1,40 @@
+<div class="overflow-x-auto m-2">
+  <%= link_to t('New Post Category'), new_post_category_path, class: "btn btn-primary my-2 btn-sm" %>
+  <table class="table table-md my-4">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th><%= t('Name') %></th>
+        <th><%= t('Sorting') %></th>
+        <th><%= t('Active') %></th>
+        <th><%= t('Created At') %></th>
+        <th><%= t('Updated At') %></th>
+        <th><%= t('Operation') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @post_categories.each do |category| %>
+        <tr>
+          <td><%= category.id %></td>
+          <td><%= link_to category.name, post_category_path(category), class: "link link-primary" %> </td>
+          <td><%= category.sorting %></td>
+          <td><%= bool_text category.active %></td>
+          <td><%= time_ago_in_words category.created_at %> <%= t('ago')%></td>
+          <td><%= time_ago_in_words category.updated_at %> <%= t('ago')%></td>
+          <td> <%= link_to t('Edit'), edit_post_category_path(category), class: 'link link-info' %> </td>  
+          <td><%= render partial: 'admin/confirm_modal', 
+            locals: {
+              action_text: t('Delete'), 
+              action_obj: category, 
+              action_link: link_to(t('Yes'), post_category_path(category), class: "btn btn-error", data: {turbo_method: 'delete'})}%>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="flex justify-center">
+    <%== pagy_nav(@pagy) %>
+  </div>
+</div>

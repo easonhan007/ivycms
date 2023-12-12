@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_12_103228) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
   end
 
   create_table "download_files", force: :cascade do |t|
@@ -93,6 +94,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "alt"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone"
+    t.text "content"
+    t.string "ip"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -119,12 +131,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
     t.string "url"
     t.boolean "new_arrive", default: true
     t.integer "sorting", default: 1
-    t.integer "hot", default: 1
+    t.boolean "hot", default: true
     t.boolean "active", default: true
     t.boolean "recommend", default: true
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "images"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -143,7 +156,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
     t.integer "recommend_per_page"
     t.text "share_code"
     t.string "email_user_name"
-    t.string "email_password"
+    t.string "email_passwd"
     t.string "email_port"
     t.string "email_smtp"
     t.string "email_receiver"
@@ -153,6 +166,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_081248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "new_arrive_per_page"
+    t.boolean "email_auto_ssl", default: true
+    t.boolean "email_authentication", default: true
   end
 
   create_table "users", force: :cascade do |t|

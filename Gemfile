@@ -74,3 +74,5 @@ end
 
 gem 'rails-i18n', '~> 7.0.0' # For 7.0.0
 gem "devise", "~> 4.9"
+gem 'email_validator'
+gem 'pagy', '~> 6.2' # omit patch digit

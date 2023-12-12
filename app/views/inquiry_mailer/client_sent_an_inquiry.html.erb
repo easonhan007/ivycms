@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Client <%= @inquiry.name %> Sent An Inquiry</h1>
+    <p>
+		Client email: <%= @inquiry.email %>
+    </p>
+	<p>Content is the following</p>
+    <p>
+		<%= simple_format @inquiry.content %>	
+    </p>
+	<p>Follow the <%= link_to "link", inquiry_url(@locale, @inquiry, host: @setting.url)%> for more details.</p>
+  </body>
+</html>

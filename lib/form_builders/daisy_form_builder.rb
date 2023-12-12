@@ -191,9 +191,9 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
       when /password/ then password_field(method, options)
       # when /time_zone/ then :time_zone
       # when /country/   then :country
-      when /email/ then email_field(method, options)
+      # when /email/ then email_field(method, options)
       when /phone/ then telephone_field(method, options)
-      when /url/ then url_field(method, options)
+      # when /url/ then url_field(method, options)
       else
         text_field(method, options)
       end

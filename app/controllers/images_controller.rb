@@ -1,10 +1,10 @@
 class ImagesController < AdminController
-  before_action :set_image, only: %i[ destroy ]
+  before_action :set_image, only: %i[ destroy remove_from_product]
 
   # GET /images or /images.json
   def index
     @image = Image.new
-    @images = Image.all
+    @pagy, @images = pagy Image.order('created_at DESC')
   end
 
   # GET /images/new
@@ -25,6 +25,24 @@ class ImagesController < AdminController
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # turbo stream
+  def create_from_product
+    @image = Image.new(image_params)
+    @saved = false
+
+    if @image.save
+      @msg = t("Image was successfully created.")
+      @saved = true
+    else
+      @msg = t("Can not create image")
+    end
+  end
+
+  # turbo stream
+  def remove_from_product
+    @image.destroy!
   end
 
   # DELETE /images/1 or /images/1.json

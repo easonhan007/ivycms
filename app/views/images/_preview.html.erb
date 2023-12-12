@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(image) do %>
+	<div class="rounded">
+		<input type="hidden" name="product[images][]" value="<%= url_for(image.content)%>" />
+		<img src="<%= url_for(image.content)%>" alt="<%= image.alt%>" class="object-cover w-24 h-24 rounded" />
+		<div class="flex justify-center my-4">
+			<%= link_to t('Delete'), 
+				remove_from_product_image_path(image), 
+				class: "btn btn-xs btn-error", 
+				data: {turbo_method: 'delete', turbo_stream: true} %>
+		</div>
+	</div>
+<% end %>

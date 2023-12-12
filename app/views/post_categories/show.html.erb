@@ -1,0 +1,15 @@
+<div class="w-full my-4">
+  <h3 class="text-lg"><%= @post_category.name %></h3>
+  <div class="flex flex-col md:flex-row">
+    <% %w(name key url sorting description active).each do |field| %>
+      <div class="w-full md:w-96">
+        <strong><%= t(field) %></strong>
+        <span><%= @post_category.send(field.to_sym) %></span>
+      </div>
+    <% end %>
+  </div>
+  <% if @post_category.content.present? %>
+    <article><%== @post_category.content %></article>
+  <% end %>
+  
+</div>

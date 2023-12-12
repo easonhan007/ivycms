@@ -3,7 +3,7 @@ class ProductsController < AdminController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @pagy, @products = pagy Product.includes(:category).order('created_at DESC')
   end
 
   # GET /products/1 or /products/1.json
@@ -15,8 +15,15 @@ class ProductsController < AdminController
     @product = Product.new
   end
 
+  def add_an_image
+    @image = Image.new(seq: SecureRandom.uuid)
+  end
+
   # GET /products/1/edit
   def edit
+    signed_ids = @product.parsed_images()
+    @images = Image.find_from(signed_ids)
+    Rails.logger.info(@images)
   end
 
   # POST /products or /products.json
@@ -65,6 +72,6 @@ class ProductsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:meta_title, :name, :key, :desc, :specs, :model_string, :content, :price, :url, :new_arrive, :sorting, :hot, :active, :category_id)
+      params.require(:product).permit(:meta_title, :name, :key, :desc, :specs, :model_string, :content, :price, :url, :new_arrive, :sorting, :hot, :active, :category_id, images: [])
     end
 end

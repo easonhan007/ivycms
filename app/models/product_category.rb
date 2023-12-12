@@ -15,6 +15,7 @@
 #  active      :boolean          default(TRUE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  content     :text
 #
 class ProductCategory < Category
   attribute :parent_id, :integer

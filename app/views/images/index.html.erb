@@ -5,9 +5,14 @@
     <%= render partial: "form", locals: {image: @image }%>
   </div>
 
-  <div id="images" class="min-w-full grid grid-flow-row sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid_cols-5 gap-8">
+  <div id="images" class="min-w-full grid grid-flow-row sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid_cols-5 gap-8 my-4">
     <%= render @images %>
   </div>
+
+  <div class="flex justify-center">
+    <%== pagy_nav(@pagy) %>
+  </div>
+
 </div>
 
 <% end %>

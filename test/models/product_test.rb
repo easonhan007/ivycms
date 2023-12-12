@@ -14,12 +14,13 @@
 #  url          :string
 #  new_arrive   :boolean          default(TRUE)
 #  sorting      :integer          default(1)
-#  hot          :integer          default(1)
+#  hot          :boolean          default(TRUE)
 #  active       :boolean          default(TRUE)
 #  recommend    :boolean          default(TRUE)
 #  category_id  :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  images       :text
 #
 require "test_helper"
 

@@ -1,0 +1,21 @@
+<%= form_with(model: inquiry, builder: DaisyFormBuilder) do |form| %>
+  <% if inquiry.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(inquiry.errors.count, "error") %> prohibited this inquiry from being saved:</h2>
+
+      <ul>
+        <% inquiry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.input("name", required: true) %>
+  <%= form.input("email", required: true) %>
+  <%= form.input("phone", required: true) %>
+  <%= form.input("content", as: "text", required: true) %>
+
+  <div class="my-4">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ class DownloadFilesController < AdminController
 
   # GET /download_files or /download_files.json
   def index
-    @download_files = DownloadFile.all
+    @pagy, @download_files = pagy DownloadFile.order('created_at DESC')
   end
 
   # GET /download_files/1 or /download_files/1.json

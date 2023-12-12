@@ -18,6 +18,16 @@
   <%= form.input :url, label: "URL", hint: t("For seo purpose")  %>
   <%= form.input :desc, label: t("Description"), as: :text  %>
   <%= form.input :sorting, label: t("Sorting")  %>
+  <div class="my-5 h-48">
+    <%= link_to t("Add Product Images"), add_an_image_products_path, class: "btn btn-primary btn-sm", data: {turbo_stream: true } %>
+    <%= turbo_frame_tag "images", class: "flex gap-4 my-4" do %>
+      <% if action_name.eql?('edit') %>
+        <% @images.each do |image| %>
+          <%= render partial: 'images/preview', locals: {image: image}%> 
+        <% end %>
+      <% end #if %>
+    <% end %>
+  </div>
   <div class="my-5">
     <label class="my-2 block"><%= t('Product Specs') %></label>
     <%= form.rich_text_area :specs %>

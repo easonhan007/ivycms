@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "add_modal" do %>
+  <% modal_id = "modal-add-#{image.seq}" %>
+  <dialog id="<%= modal_id %>" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <%= form_with(model: image, builder: DaisyFormBuilder, url: create_from_product_images_path) do |form| %>
+        <%= form.input :content, as: :file, required: true, accept: 'image/gif,image/png,image/jpeg' %>
+        <%= form.input :alt %>
+        <div class="flex justify-end gap-4">
+          <%= form.submit class: "btn btn-primary btn-sm", onclick: "document.querySelector('##{modal_id}').close()"%>
+          <a class="btn btn-sm" onclick="document.querySelector('#<%= modal_id%>').close()" ><%=t("Cancel")%></a>
+        </div>
+      <% end %>
+    </div>
+    <script>
+    	document.querySelector("#<%= modal_id %>").showModal();
+    </script>
+  </dialog>
+<% end %>

@@ -1,0 +1,6 @@
+
+<% if @saved %>
+	<%= turbo_stream.append "images", partial: "preview", locals: {image: @image} %>
+<% else %>
+
+<% end %>
