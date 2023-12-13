@@ -3,7 +3,7 @@ class NavigationsController < AdminController
 
   # GET /navigations or /navigations.json
   def index
-    @navigations = Navigation.order("sorting ASC")
+    @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
   end
 
   # GET /navigations/1 or /navigations/1.json

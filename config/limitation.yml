@@ -1,0 +1,9 @@
+shared: 
+  homepage:
+    hot_products: 8
+    recommend_products: 8
+    new_arrive_products: 8
+    banner: 6
+
+  global:
+    navigation_count: 10

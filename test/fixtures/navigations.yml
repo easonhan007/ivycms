@@ -1,4 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# == Schema Information
+#
+# Table name: navigations
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  link       :string
+#  dropdown   :boolean          default(FALSE)
+#  sorting    :integer          default(1)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 
 one:
   name: MyString

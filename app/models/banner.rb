@@ -11,4 +11,6 @@
 #
 class Banner < ApplicationRecord
 	validates :image, :url, presence: true
+
+	scope :with_limitation, ->(count) {order('sorting ASC').limit(count) }
 end

@@ -28,7 +28,12 @@ class Product < ApplicationRecord
 	has_rich_text :specs
 
 	validates :name, :specs, :content, presence: true
-
+	scope :active, -> { where(active: true) }
+	scope :by_sorting, -> {order("sorting ASC")}
+	scope :hot, ->(count) { active.by_sorting.where(hot: true).limit(count) }
+	scope :recommend, ->(count) { active.by_sorting.where(recommend: true).limit(count) }
+	scope :new_arrive, ->(count) { active.by_sorting.where(new_arrive: true).limit(count) }
+	
 	def parsed_images
 		if self[:images]
 			JSON.parse(self[:images]).map {|img_url| get_signed_id_from(img_url)}
