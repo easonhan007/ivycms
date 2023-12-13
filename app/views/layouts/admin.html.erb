@@ -18,9 +18,13 @@
 
   <body>
     <%= render partial: 'admin/notice' %>
+    
     <main class="container mx-auto flex">
       <%= render partial: 'admin/menu' %>
-      <%= yield %>
+      <div class="w-full">
+        <%= build_breadcrumbs %>
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

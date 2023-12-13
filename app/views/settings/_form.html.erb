@@ -35,6 +35,14 @@
   <div class="divider my-2"></div>
 
   <h3 class="text-lg font-semibold my-2 text-slate-600">
+    <%= t('SEO Settings') %>
+  </h3>
+  <%= form.input :seo_meta_title, hint: t("Homepage meta title") %>
+  <%= form.input :seo_keywords, hint: t('Use "," to separate each keywords') %>
+  <%= form.input :seo_description, hint: t("Homepage meta description") %>
+  <div class="divider my-2"></div>
+
+  <h3 class="text-lg font-semibold my-2 text-slate-600">
     <%= t('Email Settings') %>
   </h3>
   <%= form.input :email_user_name %>

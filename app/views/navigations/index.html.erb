@@ -1,0 +1,41 @@
+<div class="m-2 w-full">
+  <div class="mb-4">
+    <%= render partial: 'navigations/preview', locals: {navigations: @navigations} %>
+  </div>
+
+  <%= link_to t('New Navigation Item'), new_navigation_path, class: "btn btn-primary my-2 btn-sm" %>
+  <table class="table table-md my-4">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th><%= t('Name') %></th>
+        <th><%= t('Link') %></th>
+        <th><%= t('Sorting') %></th>
+        <th><%= t('Created At') %></th>
+        <th><%= t('Updated At') %></th>
+        <th><%= t('Operation') %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @navigations.each do |navigation| %>
+        <tr>
+          <td><%= navigation.id %></td>
+          <td class="font-medium"><%= navigation.name %> </td>
+          <td class="font-mono"><%= navigation.link %></td>
+          <td><%= navigation.sorting %></td>
+          <td><%= time_ago_in_words navigation.created_at %> <%= t('ago')%></td>
+          <td><%= time_ago_in_words navigation.updated_at %> <%= t('ago')%></td>
+          <td> <%= link_to t('Edit'), edit_navigation_path(navigation), class: 'link link-info' %> </td>  
+          <td><%= render partial: 'admin/confirm_modal', 
+            locals: {
+              action_text: t('Delete'), 
+              action_obj: navigation, 
+              action_link: link_to(t('Yes'), navigation_path(navigation), class: "btn btn-error", data: {turbo_method: 'delete'})}%>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

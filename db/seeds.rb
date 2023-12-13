@@ -31,6 +31,33 @@ if Setting.count < 1
 	)
 end
 
+system_navigations = {
+	home: '/',
+	products: '/products',
+	about_us: '/about',
+	news: '/news',
+	downloads: '/downloads',
+	contact_us: '/contact',
+	blog: '/blog',
+}
+
+sort = 1
+system_navigations.each do |k, v|
+	navi_name = k.to_s.titleize()
+	puts "Creating navigation item #{navi_name}"
+	n = Navigation.find_or_create_by(name: navi_name)
+	n.link = v
+	n.sorting = sort
+	n.save
+	sort += 1
+end
+
+post_categories = ['About Us', 'News', 'Contact Us', 'Blog']
+post_categories.each do |category|
+	puts "Creating post category: #{category}"
+	PostCategory.find_or_create_by(name: category)	
+end
+
 if Rails.env.development?
 	puts "Creating friend links"
 	FriendLink.find_or_create_by(name: 'Amazon', url: 'https://www.amazon.com/', sorting: 1)

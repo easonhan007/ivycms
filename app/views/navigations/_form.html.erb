@@ -1,0 +1,23 @@
+<%= form_with(model: navigation, builder: DaisyFormBuilder) do |form| %>
+  <% if navigation.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(navigation.errors.count, "error") %> prohibited this navigation from being saved:</h2>
+
+      <ul>
+        <% navigation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input "name" %>
+  <%= form.input "link" %>
+  <%= form.input "dropdown" %>
+  <%= form.input "sorting" %>
+
+  <div class="my-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t("Cancel"), navigations_path, class: "btn ml-4"%>
+  </div>
+<% end %>

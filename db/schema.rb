@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_12_103228) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_13_030051) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -107,6 +107,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_103228) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "navigations", force: :cascade do |t|
+    t.string "name"
+    t.string "link"
+    t.boolean "dropdown", default: false
+    t.integer "sorting", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "desc"
@@ -168,6 +177,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_12_103228) do
     t.integer "new_arrive_per_page"
     t.boolean "email_auto_ssl", default: true
     t.boolean "email_authentication", default: true
+    t.string "seo_meta_title"
+    t.string "seo_keywords"
+    t.string "seo_description"
   end
 
   create_table "users", force: :cascade do |t|

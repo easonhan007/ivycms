@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <%= form.input :post_category, label: t("Category"), collection: PostCategory.all  %>
+  <%= form.input :category_id, label: t("Category"), collection: PostCategory.all, text_method: :name, value_method: :id %>
   <%= form.input :title, label: t("Title")  %>
   <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos"  %>
   <%= form.input :desc, label: t("Description")  %>

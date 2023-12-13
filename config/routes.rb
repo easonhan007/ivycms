@@ -10,9 +10,20 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   scope "(:locale)", locale: /en|zh-CN/ do
-    get 'home/index'
+    get '/', to: 'home#index'
+    get '/categories', to: 'home#categories'
+    get '/category/:category', to: 'home#category'
+    get '/product/:product', to: 'home#product'
+    get '/products', to: 'home#products', as: 'home_products'
+    get '/about', to: 'home#about'
+    get '/news', to: 'home#news'
+    get '/downloads', to: 'home#downloads'
+    get '/contact', to: 'home#cantact'
+    get '/blog', to: 'home#posts'
+    get '/post/:post', to: 'home#post'
 
     scope :admin do
+      get '/', to: 'admin#index'
       get 'users/index', as: 'users'
 
       resources :settings, only: [:edit, :update]
@@ -21,6 +32,7 @@ Rails.application.routes.draw do
       resources :banners
       resources :inquiries
       resources :post_categories
+      resources :navigations
 
       resources :images do
         collection do

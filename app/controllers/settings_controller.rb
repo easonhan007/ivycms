@@ -34,6 +34,6 @@ class SettingsController < AdminController
         :whatsapp, :phone, :product_per_page, :post_per_page, :recommend_per_page, 
         :share_code, :email_user_name, :email_passwd, :email_port, :email_smtp, 
         :email_receiver, :email_sender, :email_active, :ga_code, :new_arrive_per_page,
-        :email_auto_ssl, :email_authentication)
+        :email_auto_ssl, :email_authentication, :seo_meta_title, :seo_description, :seo_keywords)
     end
 end

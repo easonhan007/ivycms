@@ -1,15 +1,22 @@
 <div class="w-full my-4">
-  <h3 class="text-lg"><%= @post_category.name %></h3>
-  <div class="flex flex-col md:flex-row">
-    <% %w(name key url sorting description active).each do |field| %>
-      <div class="w-full md:w-96">
-        <strong><%= t(field) %></strong>
-        <span><%= @post_category.send(field.to_sym) %></span>
+  <h3 class="text-xl m-4 font-semibold"><%= @post_category.name %></h3>
+  <div class="min-w-full grid grid-flow-row sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% %w(name key url description active).each do |field| %>
+      <div class="flex m-4">
+        <strong class="w-24"><%= t(field) %></strong>
+        <% if field.eql?('active') %>
+          <span><%= bool_text @post_category.active %></span>
+        <% else %>
+          <span><%= @post_category.send(field.to_sym) %></span>
+        <% end %>
       </div>
     <% end %>
   </div>
   <% if @post_category.content.present? %>
-    <article><%== @post_category.content %></article>
+    <div class="m-4">
+      <h4 class="text-lg my-2 font-medium"><%= t('Content')%></h4>
+      <article><%== @post_category.content %></article>
+    </div>
   <% end %>
   
 </div>

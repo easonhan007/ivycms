@@ -1,0 +1,14 @@
+<div class="text-sm breadcrumbs">
+  <ul>
+	<% breadcrumbs.each do |item| %>
+		
+		<% if item.key(:path) %>
+			<li><%= link_to item[:text], item[:path] %></li>
+		<% else %>	
+			<li><%= item[:text]%></li>
+		<% end %>
+			
+	<% end %>
+  </ul>
+</div>	
+	

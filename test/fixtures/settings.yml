@@ -29,6 +29,9 @@
 #  new_arrive_per_page  :integer
 #  email_auto_ssl       :boolean          default(TRUE)
 #  email_authentication :boolean          default(TRUE)
+#  seo_meta_title       :string
+#  seo_keywords         :string
+#  seo_description      :string
 #
 
 one:

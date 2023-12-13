@@ -23,7 +23,8 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
   private
 
   def form_group(method, options = {}, &block)
-    tag.div class: "my-5 flex justify-start items-baseline #{method}" do
+    # tag.div class: "my-5 flex justify-start items-baseline #{method}" do
+    tag.div class: "my-5 flex justify-start items-baseline" do
       safe_join [
         block.call,
         hint_text(options[:hint]),
@@ -34,7 +35,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def hint_text(text)
     return if text.nil?
-    tag.small text, class: "text-sm text-gray-600 p-4 hidden lg:block"
+    tag.small text, class: "text-sm text-gray-600 p-4 hidden lg:block normal-case"
   end
 
   def error_text(method)
