@@ -19,4 +19,9 @@
 #
 class Category < ApplicationRecord
 	validates :name, presence: true
+
+	def fragment
+		self[:url] || self[:id]
+	end
+
 end

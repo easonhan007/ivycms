@@ -1,0 +1,6 @@
+<h2 class="w-full md:w-1/2 mx-auto font-semibold text-4xl text-center mt-8 mb-4"><%= t("Featuerd Products") %></h3>
+<div class="my-4 grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 p-8">
+	<% @recommend_products.to_a.to(1).each do |product| %>
+		<%= render(partial: 'v_product_card', locals: {product: product}) %>
+	<% end %>
+</div>

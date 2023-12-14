@@ -16,5 +16,11 @@ class Post < ApplicationRecord
 	belongs_to :category, class_name: 'PostCategory', foreign_key: :category_id
 	has_rich_text :content
 
+	scope :latest, ->(count) {order('created_at DESC').limit(count)}
 	validates :title, presence: true
+
+	def fragment
+		self[:display_title] || self[:id]
+	end
+
 end

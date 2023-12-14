@@ -34,6 +34,7 @@ end
 system_navigations = {
 	home: '/',
 	products: '/products',
+	categories: '/categories',
 	about_us: '/about',
 	news: '/news',
 	downloads: '/downloads',
@@ -84,5 +85,18 @@ if Rails.env.development?
 			end #if
 		end 
 	end 
+
+	banners = [
+		{name: 'one', url: 'https://plus.unsplash.com/premium_photo-1687710306899-10a3bfcacf9b?q=80&w=1080&h=400&auto=format&fit=crop'},
+		{name: 'two', url: 'https://images.unsplash.com/photo-1519822472072-ec86d5ab6f5c?q=80&w=1080&h=400&auto=format&fit=crop'},
+		{name: 'three', url: 'https://images.unsplash.com/photo-1481480512736-8798372eaf4a?q=80&w=1080&h=400&auto=format&fit=crop'},
+		{name: 'four', url: 'https://images.unsplash.com/photo-1492724724894-7464c27d0ceb?q=80&w=1080&h=400&auto=format&fit=crop'},
+	]
+	banners.each do |banner|
+		puts "Creating banner #{banner[:name]}"
+		b = Banner.find_or_create_by(image: banner[:name])
+		b.url = banner[:url]
+		b.save
+	end
 	
 end #if

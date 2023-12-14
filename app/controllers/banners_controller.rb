@@ -3,7 +3,7 @@ class BannersController < AdminController
 
   # GET /banners or /banners.json
   def index
-    @banners = Banner.all
+    @banners = Banner.order("sorting ASC").all
   end
 
   # GET /banners/1 or /banners/1.json

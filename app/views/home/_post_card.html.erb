@@ -1,0 +1,10 @@
+<div class="card h-48 bg-base-100 shadow-xl image-full">
+  <figure><img src="<%= post.image.present? ? post.image : default_img %>" alt="<%= post.title %>" class="object-cover h-48 min-w-full" /></figure>
+  <div class="card-body">
+    <h2 class="card-title"><%= post.title %></h2>
+    <p><%= post.desc %></p>
+    <div class="card-actions justify-end">
+		<%= link_to t('view'), home_post_path(post.fragment), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

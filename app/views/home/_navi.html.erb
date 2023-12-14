@@ -1,0 +1,52 @@
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+	  	<% @navigations.each do |nav| %>
+			<% if not nav.name.downcase.eql?('categories') %>
+				<li><%= link_to nav.name, insert_locale(nav.link) %></li>
+			<% else %>
+				<li>
+					<%= link_to nav.name, insert_locale(nav.link) %>
+					<ul class="p-2">
+						<% @product_categories.each do |category| %>
+							<%= build_category(category) %>	
+						<% end %>
+					</ul>
+				</li>
+			<% end %>
+		<% end %>
+      </ul>
+    </div>
+    <a class="btn btn-ghost text-xl"><%= @setting.name %></a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+	  	<% @navigations.each do |nav| %>
+			<% if not nav.name.downcase.eql?('categories') %>
+				<li><%= link_to nav.name, insert_locale(nav.link) %></li>
+			<% else %>
+				<li>
+					<details>
+						<summary><%= nav.name %></summary>
+						<ul class="p-2">
+							<% @product_categories.each do |category| %>
+								<%= build_category(category) %>	
+							<% end %>
+						</ul>
+					</details>
+				</li>
+			<% end %>
+		<% end %>
+    </ul>
+  </div>
+  <div class="navbar-end">
+  	<div class="form-control">
+      <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto mr-2" />
+	</div>
+    <a class="btn btn-primary">Search</a>
+  </div>
+</div>

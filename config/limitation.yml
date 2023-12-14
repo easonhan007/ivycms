@@ -4,6 +4,12 @@ shared:
     recommend_products: 8
     new_arrive_products: 8
     banner: 6
+    default_banner_url: 'https://images.unsplash.com/photo-1641790176913-5b573e7ebacd?q=80&w=1080&h=400&auto=format&fit=crop'
+    post_count: 3
+    friend_link_count: 4
+
+  post: 
+    default_img: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1080&auto=format&fit=crop'
 
   global:
     navigation_count: 10

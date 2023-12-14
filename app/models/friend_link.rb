@@ -12,4 +12,6 @@
 #
 class FriendLink < ApplicationRecord
 	validates :name, :url, presence: true
+
+	scope :with_limitation, ->(count) { order('sorting ASC').limit(count) }
 end

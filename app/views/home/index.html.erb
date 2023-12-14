@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-</div>
+<% if @banners.size > 1  %>
+  <%= render "home/carousel" %>
+<% else %>
+  <%= render "home/hero" %>
+<% end %>
+<%= render "home/featured_products" %>
+<%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')} %>
+<%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')} %>
+<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
+

@@ -48,4 +48,8 @@ class Product < ApplicationRecord
 		step_1.split('/').first
 	end
 
+	def first_image
+		JSON.parse(self[:images]).try(:first)
+	end
+
 end

@@ -1,0 +1,10 @@
+<div class="card bg-base-100 shadow-xl">
+  <figure><img src="<%= product.first_image %>" alt="<%= product.name %>" /></figure>
+  <div class="card-body">
+    <h2 class="card-title overflow-hidden"><%= product.name %></h2>
+    <p><%= product.desc %></p>
+    <div class="card-actions justify-end">
+      <a class="btn btn-primary" href="<%= home_product_path(product)%>"><%= t('View') %></a>
+    </div>
+  </div>
+</div>
