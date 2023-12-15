@@ -1,10 +1,24 @@
-<% if @banners.size > 1  %>
-  <%= render "home/carousel" %>
+<% if  @setting.seo_meta_title.present? %>
+  <title><%= @setting.seo_meta_title %></title>
 <% else %>
-  <%= render "home/hero" %>
+  <title>Ivy CRM</title>
+<% end %>
+
+<% if  @setting.seo_keywords.present? %>
+  <%= render partial: 'home/seo_keywords', locals: {keyword: @setting.seo_keywords}, cache: true %>
+<% end %>
+
+<% if  @setting.seo_description.present? %>
+  <%= render partial: 'home/seo_description', locals: {description: @setting.description}, cache: true %>
+<% end %>
+
+<% if @banners.size > 1  %>
+  <%= render "home/carousel", cache: true %>
+<% else %>
+  <%= render "home/hero", cache: true %>
 <% end %>
 <%= render "home/featured_products" %>
-<%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')} %>
-<%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')} %>
-<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
+<%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')}, cache: true %>
+<%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')}, cache: true %>
+<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')}, cache: true %>
 

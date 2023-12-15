@@ -27,6 +27,8 @@ class Product < ApplicationRecord
 	has_rich_text :content
 	has_rich_text :specs
 
+	before_save :dasherize_url
+
 	validates :name, :specs, :content, presence: true
 	scope :active, -> { where(active: true) }
 	scope :by_sorting, -> {order("sorting ASC")}
@@ -51,5 +53,16 @@ class Product < ApplicationRecord
 	def first_image
 		JSON.parse(self[:images]).try(:first)
 	end
+
+	def fragment
+		self[:url].present? ? self[:url] : self[:id]
+	end
+
+	private
+		def dasherize_url
+			if self[:url].present?
+				self[:url] = self[:url].gsub(/[^a-zA-Z0-9_\-]/, '').split().map { |word| word.downcase }.join('-')
+			end #if
+		end
 
 end

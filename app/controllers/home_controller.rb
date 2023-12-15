@@ -1,13 +1,12 @@
 class HomeController < ApplicationController
+  before_action :set_layout_data
+
   def index
-    @setting = Setting.last
-    @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
     @banners = Banner.with_limitation(@limitation[:homepage][:banner])
     if @banners.blank?
       @banners = [Banner.new(name: 'default', url: @limitation[:homepage][:default_banner_url])]
     end
 
-    @product_categories = ProductCategory.build()
     @hot_products = Product.hot(@setting.product_per_page || @limitation[:homepage][:hot_products])
     @recommend_products = Product.hot(@setting.recommend_per_page || @limitation[:homepage][:recommend_products])
     @new_arrive_products = Product.new_arrive(@setting.new_arrive_per_page || @limitation[:homepage][:new_arrive_products])
@@ -15,9 +14,7 @@ class HomeController < ApplicationController
     @latest_posts = Post.latest(@limitation[:homepage][:post_count])
     @post_default_img = @limitation[:post][:default_img]
 
-    @friend_links = FriendLink.with_limitation(@limitation[:homepage][:friend_link_count])
     
-    @inquiry = Inquiry.new()
 
   end
 
@@ -39,5 +36,23 @@ class HomeController < ApplicationController
       format.turbo_stream {}
     end
   end
+
+  def product
+    if params[:product].to_i.eql?(0)
+      condition = {url: params[:product]}
+    else
+      condition = {id: params[:product].to_i}
+    end#if
+    @product = Product.where(condition).take()
+  end
+
+  private 
+    def set_layout_data
+      @setting = Setting.last
+      @product_categories = ProductCategory.build()
+      @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
+      @friend_links = FriendLink.with_limitation(@limitation[:homepage][:friend_link_count])
+      @inquiry = Inquiry.new()
+    end
 
 end

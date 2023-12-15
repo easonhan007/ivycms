@@ -3,6 +3,7 @@
     <header class="footer-title"><%= t("Contact") %></header> 
     <a class="link link-hover" href="mailto:<%= @setting.email %>"><%= @setting.email %></a>
     <a class="link link-hover" href="tel:<% @setting.phone %>"><%= @setting.phone %></a>
+    <a class="link link-hover"><span class="text-neutral-content pr-2"><%== whatsapp_icon(16)%></span>: <%= @setting.whatsapp %></a>
 	<%= @setting.copyright %>
   </nav> 
   <nav>
