@@ -1,5 +1,6 @@
 class ProductsController < AdminController
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_preview_link, only: %i[ show edit ]
 
   # GET /products or /products.json
   def index
@@ -74,4 +75,9 @@ class ProductsController < AdminController
     def product_params
       params.require(:product).permit(:meta_title, :name, :key, :desc, :specs, :model_string, :content, :price, :url, :new_arrive, :sorting, :hot, :active, :category_id, images: [])
     end
+
+    def set_preview_link
+      @preview_link = home_product_path(@product.fragment)
+    end
+
 end

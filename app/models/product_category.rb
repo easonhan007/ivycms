@@ -20,6 +20,9 @@
 class ProductCategory < Category
   attribute :parent_id, :integer
   attr_accessor :nodes
+
+  has_many :products
+
   after_save :set_level1_path
   scope :with_children, ->(path) { where("path like ? ", "#{path}%").where(active: true).order("level ASC").order("sorting ASC") }
 

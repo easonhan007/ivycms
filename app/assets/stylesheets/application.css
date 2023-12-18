@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.top {
+	--offset: 100px; 
+
+	position: fixed;
+	bottom: 10px;      
+	right: 10px; 
+	margin-top: calc(100vh + var(--offset));
+}
+

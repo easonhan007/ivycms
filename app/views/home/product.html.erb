@@ -1,1 +1,29 @@
-<h3 class="text-2xl font-semibold"><%= @product.name %></h3>
+<div class="container mx-auto">
+	<div class="p-2">
+		<%= render partial: 'home/breadcrumb', locals: {category: @category}%>
+	</div>
+	<div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 my-4" data-controller="product">
+		<div class="p-2 flex gap-4">
+			<div class="w-3/4">
+				<img src="<%= @product.first_image %>" alt="" class="w-full h-64 md:h-[32rem] object-cover" data-product-target="primary">
+			</div>
+			<div class="flex flex-col">
+				<% @product.all_images.to(3).each do |img_src| %>
+					<div class="p-2">
+						<img src="<%= img_src %>" class="w-28 h-28 border border-neutral-300 cursor-pointer" data-action="click->product#switch">
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="p-2">
+			<h3 class="font-semibold text-2xl"><%= @product.display_name %></h3>
+			<p class="text-sm text-neutral-400"><%= @product.desc %></p>
+			<div class="font-serif"><%= @product.specs %></div>
+		</div>
+	</div>
+
+	<div class="p-2 my-6">
+		<h3 class="w-2/3 mx-auto text-center my-2 text-4xl"><%= t('Description') %></h3>	
+		<%= @product.content %>
+	</div>
+</div>

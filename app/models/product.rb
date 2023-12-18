@@ -50,18 +50,26 @@ class Product < ApplicationRecord
 		step_1.split('/').first
 	end
 
+	def all_images
+		JSON.parse(self[:images])
+	end
+
 	def first_image
-		JSON.parse(self[:images]).try(:first)
+		all_images.try(:first)
 	end
 
 	def fragment
 		self[:url].present? ? self[:url] : self[:id]
 	end
 
+	def display_name
+		self[:meta_title].present? ? self[:meta_title] : self[:name]
+	end
+
 	private
 		def dasherize_url
 			if self[:url].present?
-				self[:url] = self[:url].gsub(/[^a-zA-Z0-9_\-]/, '').split().map { |word| word.downcase }.join('-')
+				self[:url] = self[:url].gsub(/[^a-zA-Z0-9_\-\s]/, '').split().map { |word| word.downcase }.join('-')
 			end #if
 		end
 

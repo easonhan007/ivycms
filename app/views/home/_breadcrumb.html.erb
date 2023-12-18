@@ -1,0 +1,7 @@
+<div class="text-sm breadcrumbs">
+  <ul>
+	<% @category.each do |item| %>
+		<li><a href="<%= home_category_path item.fragment%>"><%= item.name %></a></li>	
+	<% end %>
+  </ul>
+</div>

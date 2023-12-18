@@ -18,7 +18,7 @@
 #  content     :text
 #
 class PostCategory < Category
-	has_many :posts
+	has_many :posts, class_name: 'Post', foreign_key: 'category_id'
 	has_rich_text :content
 
 end

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_action :set_layout_data
+  before_action :get_post_default_image, only: %w(index news about posts contact post)
 
   def index
     @banners = Banner.with_limitation(@limitation[:homepage][:banner])
@@ -12,10 +13,6 @@ class HomeController < ApplicationController
     @new_arrive_products = Product.new_arrive(@setting.new_arrive_per_page || @limitation[:homepage][:new_arrive_products])
 
     @latest_posts = Post.latest(@limitation[:homepage][:post_count])
-    @post_default_img = @limitation[:post][:default_img]
-
-    
-
   end
 
   def inquiry
@@ -44,6 +41,57 @@ class HomeController < ApplicationController
       condition = {id: params[:product].to_i}
     end#if
     @product = Product.where(condition).take()
+    @category = @product.category.path_to_category_arr()
+  end
+
+  def category
+    if params[:category].to_i.eql?(0)
+      condition = {url: params[:category]}
+    else
+      condition = {id: params[:category].to_i}
+    end#if
+
+    @category = Category.where(condition).take()
+    @pagy, @products = @category.products.order("sorting ASC")
+  end
+
+  def products
+    @pagy, @products = Product.includes(:category).order("sorting ASC")
+  end
+
+  def about
+    @category = PostCategory.where(name: 'About Us').take()
+    render 'home/post_category'
+  end
+
+  def contact
+    @category = PostCategory.where(name: 'Contact Us').take()
+    render 'home/post_category'
+  end
+
+  def news
+    @category = PostCategory.where(name: 'News').take()
+    @pagy, @resouces = pagy @category.posts.order('created_at DESC')
+    render 'home/post_category'
+  end
+
+  def posts
+    @category = PostCategory.where(name: 'Blog').take()
+    @pagy, @resouces = pagy @category.posts.order('created_at DESC')
+    render 'home/post_category'
+  end
+
+  def downloads
+    @pagy, @download_files = pagy DownloadFile.order('created_at DESC')
+  end
+
+  def post
+    if params[:post].to_i.eql?(0)
+      condition = {display_title: params[:post]}
+    else
+      condition = {id: params[:post].to_i}
+    end#if
+    @post = Post.where(condition).take()
   end
 
   private 
@@ -53,6 +101,10 @@ class HomeController < ApplicationController
       @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
       @friend_links = FriendLink.with_limitation(@limitation[:homepage][:friend_link_count])
       @inquiry = Inquiry.new()
+    end
+
+    def get_post_default_image
+      @post_default_img = @limitation[:post][:default_img]
     end
 
 end

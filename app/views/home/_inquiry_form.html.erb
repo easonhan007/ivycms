@@ -1,12 +1,12 @@
 <%= form_with(model: inquiry, class: "w-full", url: home_inquiry_path) do |form| %>
-	<%= form.email_field("email", required: true, placeholder: t("Email"), class: "input input-sm input-bordered min-w-full") %>
-	<div class="flex justify-between gap-2 my-2">
+	<%= form.email_field("email", required: true, placeholder: t("Email"), class: "input input-sm input-bordered md:min-w-full") %>
+	<div class="flex md:justify-between gap-2 my-2 flex-col md:flex-row">
 		<%= form.text_field("name", required: true, class: "input input-bordered input-sm", placeholder: t('Name')) %>
 		<%= form.telephone_field("phone", required: true, placeholder: t("Phone"), class: "input input-bordered input-sm") %>
 	</div>
-  <%= form.text_field("content", required: true, class: "textarea textarea-bordered textarea-sm min-w-full", rows: 4) %>
+  <%= form.text_field("content", required: true, class: "textarea textarea-bordered textarea-sm md:min-w-full", rows: 4) %>
 
   <div class="my-4 flex justify-end">
-    <%= form.submit class: "btn btn-sm" %>
+    <%= form.submit class: "btn btn-sm btn-neutral" %>
   </div>
 <% end %>

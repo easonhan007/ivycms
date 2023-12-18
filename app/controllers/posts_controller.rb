@@ -1,5 +1,6 @@
 class PostsController < AdminController
   before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_preview_link, only: %i[ show edit ]
 
   # GET /posts or /posts.json
   def index
@@ -66,5 +67,9 @@ class PostsController < AdminController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :desc, :content, :image, :display_title, :category_id)
+    end
+
+    def set_preview_link
+      @preview_link = home_post_path(@post.fragment)
     end
 end

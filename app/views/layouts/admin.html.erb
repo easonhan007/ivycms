@@ -25,6 +25,7 @@
         <%= build_breadcrumbs %>
         <%= yield %>
       </div>
+      <a href="<%= @preview_link ? @preview_link: "/" %>" class="btn btn-sm btn-neutral fixed bottom-4 right-4" target="_blank"><%= t('Preview') %></a>
     </main>
   </body>
 </html>

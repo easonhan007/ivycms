@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get '/about', to: 'home#about', as: 'about_us'
     get '/news', to: 'home#news', as: 'news'
     get '/downloads', to: 'home#downloads', as: 'home_downloads'
-    get '/contact', to: 'home#cantact', as: 'contact'
+    get '/contact', to: 'home#contact', as: 'contact'
     get '/blog', to: 'home#posts', as: 'home_posts'
     get '/post/:post', to: 'home#post', as: 'home_post'
     post '/create_inquiry', to: 'home#inquiry', as: 'home_inquiry'
