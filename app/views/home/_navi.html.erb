@@ -1,4 +1,4 @@
-<% kls = opacity ? "" : "bg-transparent text-slate-400" %>
+<% kls = opacity ? "" : "bg-transparent text-slate-200" %>
 
 <div class="navbar bg-base-100 <%= kls%>">
   <div class="navbar-start">
@@ -26,7 +26,7 @@
     <a class="btn btn-ghost text-xl"><%= @setting.name %></a>
   </div>
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
+    <ul class="menu menu-horizontal px-1 text-xl">
 	  	<% @navigations.each do |nav| %>
 			<% if not nav.name.downcase.eql?('categories') %>
 				<li><%= link_to nav.name, insert_locale(nav.link) %></li>
@@ -48,7 +48,7 @@
   <div class="navbar-end">
   	<div class="form-control">
 		<form action="<%= home_search_path%>" method="get">
-	      <input type="text" placeholder="product name" class="input input-bordered w-24 md:w-auto mr-2" name="kw" />
+	      <input type="text" placeholder="product name" class="input input-bordered w-24 md:w-auto mr-2 text-neutral-500" name="kw" />
 	      <button class="btn btn-primary" type=""><%= t('Search')%></button>
 		</form>
 	</div>

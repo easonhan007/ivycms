@@ -1,6 +1,17 @@
 <% content_for :navi do %>
     <%= render partial: 'home/navi', locals: {opacity: true} %>
 <% end %>
+
+<% content_for :title do %>
+	
+	<% if @category %>
+		<title><%= @category.name %></title>
+	<% else %>	
+		<title><%= t('Products')%></title>
+	<% end %>
+	
+<% end %>
+
 <div class="w-full flex justify-center mt-8 mb-4 gap-4">
 	<% @categories.each do |category| %>	
 		<% kls = "text-xl font-semibold cursor-pointer text-orange-500" %>
