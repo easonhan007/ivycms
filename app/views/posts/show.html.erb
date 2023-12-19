@@ -1,7 +1,7 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <%= render @post %>
-  	<div class="flex gap-4 my-4">
+  	<div class="flex gap-4 my-4 justify-end">
       <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-primary" %>
       <%= button_to "Destroy this post", post_path(@post), method: :delete, class: "btn btn-danger" %>
       <%= link_to "Back to posts", posts_path, class: "btn" %>

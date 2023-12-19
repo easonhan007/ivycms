@@ -1,0 +1,21 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+<div class="w-full flex justify-center mt-8 mb-4 gap-4">
+	<% @categories.each do |category| %>	
+		<% kls = "text-xl font-semibold cursor-pointer text-orange-500" %>
+		<% if action_name.downcase.eql?('category') and category.id.eql?(@category.id) %>
+			<% kls += " underline underline-offset-8"%>	
+		<% else %>
+			<% kls += " hover:underline hover:underline-offset-8"%>
+		<% end %>
+		<%= link_to category.name, home_category_path(category.fragment), 
+			class: kls%>
+	<% end %>
+</div>
+
+<%= render partial: "home/product_cards", locals: { products: @products, title: false } %>
+
+<div class="my-4 mx-auto w-1/2 text-center">
+	<%== pagy_nav(@pagy) %>
+</div>

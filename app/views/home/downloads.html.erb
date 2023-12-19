@@ -1,3 +1,7 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+
 <div class="container mx-auto my-4">
 	<h3 class="text-2xl font-semibold my-4 w-1/2 mx-auto text-center"><%= t('Downloads')%></h3>
 	<ul>

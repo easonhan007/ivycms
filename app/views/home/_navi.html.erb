@@ -1,4 +1,6 @@
-<div class="navbar bg-base-100">
+<% kls = opacity ? "" : "bg-transparent text-slate-400" %>
+
+<div class="navbar bg-base-100 <%= kls%>">
   <div class="navbar-start">
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -32,7 +34,7 @@
 				<li>
 					<details>
 						<summary><%= nav.name %></summary>
-						<ul class="p-2">
+						<ul class="p-2 z-[999]">
 							<% @product_categories.each do |category| %>
 								<%= build_category(category) %>	
 							<% end %>
@@ -45,8 +47,10 @@
   </div>
   <div class="navbar-end">
   	<div class="form-control">
-      <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto mr-2" />
+		<form action="<%= home_search_path%>" method="get">
+	      <input type="text" placeholder="product name" class="input input-bordered w-24 md:w-auto mr-2" name="kw" />
+	      <button class="btn btn-primary" type=""><%= t('Search')%></button>
+		</form>
 	</div>
-    <a class="btn btn-primary">Search</a>
   </div>
 </div>

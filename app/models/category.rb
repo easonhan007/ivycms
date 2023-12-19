@@ -21,7 +21,7 @@ class Category < ApplicationRecord
 	validates :name, presence: true
 
 	def fragment
-		self[:url] || self[:id]
+		(self[:url].present? and not self[:url].blank?) ? self[:url] : self[:id]
 	end
 
 end

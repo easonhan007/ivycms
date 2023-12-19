@@ -1,3 +1,7 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+
 <div id="<%= dom_id download_file %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>

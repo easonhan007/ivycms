@@ -1,3 +1,7 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+
 <div class="container mx-auto my-10">
 	<h3 class="w-1/2 mx-auto text-center font-semibold text-2xl my-4"><%= @category.name.titleize %></h3>
 

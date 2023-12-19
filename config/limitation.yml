@@ -11,5 +11,8 @@ shared:
   post: 
     default_img: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1080&auto=format&fit=crop'
 
+  product:
+    category_count: 12
+
   global:
     navigation_count: 10

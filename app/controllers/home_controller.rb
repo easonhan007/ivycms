@@ -51,12 +51,15 @@ class HomeController < ApplicationController
       condition = {id: params[:category].to_i}
     end#if
 
-    @category = Category.where(condition).take()
-    @pagy, @products = @category.products.order("sorting ASC")
+    @category = ProductCategory.where(condition).take()
+    @categories = ProductCategory.order("sorting ASC").limit(@limitation[:product][:category_count])
+    @pagy, @products = pagy @category.products.order("sorting ASC")
+    render "home/products"
   end
 
   def products
-    @pagy, @products = Product.includes(:category).order("sorting ASC")
+    @categories = ProductCategory.order("sorting ASC").limit(@limitation[:product][:category_count])
+    @pagy, @products = pagy Product.includes(:category).order("sorting ASC")
   end
 
   def about
@@ -92,6 +95,16 @@ class HomeController < ApplicationController
       condition = {id: params[:post].to_i}
     end#if
     @post = Post.where(condition).take()
+  end
+
+  def search
+    if params[:kw].present?
+      @categories = ProductCategory.order("sorting ASC").limit(@limitation[:product][:category_count])
+      @pagy, @products = pagy Product.includes(:category).where("name like ?", "%#{params[:kw]}%").order("sorting ASC")
+      render "home/products"
+    else
+      redirect_to root_path
+    end
   end
 
   private 

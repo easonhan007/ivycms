@@ -1,7 +1,9 @@
-<% if  @setting.seo_meta_title.present? %>
-  <title><%= @setting.seo_meta_title %></title>
-<% else %>
-  <title>Ivy CRM</title>
+<% content_for :title do %>
+  <% if  @setting.seo_meta_title.present? %>
+    <title><%= @setting.seo_meta_title %></title>
+  <% else %>
+    <title>Ivy CRM</title>
+  <% end %>
 <% end %>
 
 <% if  @setting.seo_keywords.present? %>
@@ -12,11 +14,15 @@
   <%= render partial: 'home/seo_description', locals: {description: @setting.description} %>
 <% end %>
 
-<% if @banners.size > 1  %>
-  <%= render "home/carousel" %>
-<% else %>
-  <%= render "home/hero" %>
+<% content_for :navi do %>
+  <% if @banners.size.eql?(1)  %>
+    <%= render "home/hero" %>
+  <% else %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+    <%= render "home/carousel" %>
+  <% end %>
 <% end %>
+
 <%= render "home/featured_products" %>
 <%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')} %>
 <%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')} %>

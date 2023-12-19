@@ -19,13 +19,14 @@
   <body>
     <%= render partial: 'admin/notice' %>
     
-    <main class="container mx-auto flex">
+    <main class="container mx-auto flex min-h-screen">
       <%= render partial: 'admin/menu' %>
-      <div class="w-full">
+      <div class="md:w-full w-4/5 mx-auto">
         <%= build_breadcrumbs %>
         <%= yield %>
       </div>
       <a href="<%= @preview_link ? @preview_link: "/" %>" class="btn btn-sm btn-neutral fixed bottom-4 right-4" target="_blank"><%= t('Preview') %></a>
     </main>
+    <%= render partial: 'admin/footer' %>
   </body>
 </html>

@@ -1,3 +1,7 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+
 <div class="container mx-auto">
 	<div class="p-2">
 		<%= render partial: 'home/breadcrumb', locals: {category: @category}%>
@@ -26,4 +30,5 @@
 		<h3 class="w-2/3 mx-auto text-center my-2 text-4xl"><%= t('Description') %></h3>	
 		<%= @product.content %>
 	</div>
+	
 </div>
