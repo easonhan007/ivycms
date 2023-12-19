@@ -7,6 +7,7 @@
         <th><%= t('Email') %></th>
         <th><%= t('Phone') %></th>
         <th>IP</th>
+        <th><%= t('Product') %></th>
         <th><%= t('Content') %></th>
         <th><%= t('Created At') %></th>
       </tr>
@@ -18,6 +19,13 @@
           <td><%=  inquiry.email %></td>
           <td><%=  inquiry.phone %></td>
           <td><%=  inquiry.ip %></td>
+          
+          <% if inquiry.product.present? %>
+            <td><%= link_to product.name, product_path(product), class: "link"%></td> 
+          <% else %>
+            <td></td>
+          <% end %>
+          
           <td title="<%= inquiry.content %>"><%=  inquiry.content.truncate(50) %></td>
           <td><%= time_ago_in_words inquiry.created_at %> <%= t('ago')%></td>
         </tr>

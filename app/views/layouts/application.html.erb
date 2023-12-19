@@ -22,7 +22,7 @@
   <body>
     <main class="min-h-screen bg-slate-50" >
       <a class="btn btn-sm top z-50" href="#">&#8593;</a>
-      <a class="btn btn-sm z-20 top-1/2 right-0 fixed" href="#" data-controller="inquiry-btn" data-action="inquiry-btn#to_form"><%= t('Inquiry') %></a>
+      <%= render('home/inquiry_btn') %>
       <%= yield :navi %>
       <%= yield %>
       <%= render "home/footer" %>

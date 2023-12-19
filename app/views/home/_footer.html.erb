@@ -22,7 +22,13 @@
     <header class="footer-title"><%= t("Send an inquiry")%></header> 
     <fieldset class="form-control md:w-80">
 		<%= turbo_frame_tag "new_inquiry" do %>
-			<%= render partial: 'inquiry_form', locals: {inquiry: @inquiry} %>
+    
+      <% if @product %>
+  			<%= render partial: 'inquiry_form', locals: {inquiry: @inquiry, product: @product} %>
+      <% else %> 
+  			<%= render partial: 'inquiry_form', locals: {inquiry: @inquiry, product: false} %>
+      <% end %>
+    
 		<% end %>
     </fieldset>
   </nav>
