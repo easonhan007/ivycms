@@ -22,7 +22,11 @@
     <main class="container mx-auto flex min-h-screen">
       <%= render partial: 'admin/menu' %>
       <div class="md:w-full w-4/5 mx-auto">
-        <%= build_breadcrumbs %>
+        
+        <% if not controller_name.eql?("admin") %>
+          <%= build_breadcrumbs %>
+        <% end %>
+        
         <%= yield %>
       </div>
       <a href="<%= @preview_link ? @preview_link: "/" %>" class="btn btn-sm btn-neutral fixed bottom-4 right-4" target="_blank"><%= t('Preview') %></a>
