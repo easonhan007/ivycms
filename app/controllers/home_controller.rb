@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @banners = Banner.with_limitation(@limitation[:homepage][:banner])
     if @banners.blank?
-      @banners = [Banner.new(name: 'default', url: @limitation[:homepage][:default_banner_url])]
+      @banners = [Banner.new(image: 'default', url: @limitation[:homepage][:default_banner_url])]
     end
 
     @hot_products = Product.hot(@setting.product_per_page || @limitation[:homepage][:hot_products])

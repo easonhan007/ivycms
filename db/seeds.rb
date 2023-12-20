@@ -19,6 +19,7 @@ if Setting.count < 1
 	puts "Creating default setting"
 	Setting.create(
 		name: 'Ivy CMS',
+		url: 'www.ivy-cms.cc',
 		copyright: 'CopyRight © 2023 ivy cms',
 		email: 'ivycms@ethanhan.cc',
 		skype: 'ivycms',
