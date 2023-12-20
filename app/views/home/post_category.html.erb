@@ -7,7 +7,7 @@
 <% end %>
 
 <% if  @category.key.present? %>
-  <%= render partial: 'home/seo_keywords', locals: {keyword: @category.key} %>
+  <%= render partial: 'home/seo_meta_title', locals: {title: @category.key} %>
 <% end %>
 
 <% if  @category.description.present? %>

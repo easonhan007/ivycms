@@ -1,4 +1,4 @@
-<%= form_with(model: post, builder: DaisyFormBuilder) do |form| %>
+<%= form_with(model: post, builder: DaisyFormBuilder, html: {data: {controller: 'admin-form'}}) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -11,9 +11,9 @@
     </div>
   <% end %>
   <%= form.input :category_id, label: t("Category"), collection: PostCategory.all, text_method: :name, value_method: :id %>
-  <%= form.input :title, label: t("Title")  %>
-  <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos"  %>
-  <%= form.input :desc, label: t("Description")  %>
+  <%= form.input :title, label: t("Title"), input_html: {maxlength: 100}, input_html: {data: {'admin-form-target': 'title', 'action': 'admin-form#dasherize'}}  %>
+  <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos", input_html: {data: {'admin-form-target': 'displayTitle'}}  %>
+  <%= form.input :desc, label: t("Description"), input_html: {maxlength: 200}  %>
   <%= form.input :image, label: t("Image URL")  %>
   <%= form.rich_text_area :content %>
 

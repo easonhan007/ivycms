@@ -1,13 +1,9 @@
 <% content_for :title do %>
-  <% if  @setting.seo_meta_title.present? %>
-    <title><%= @setting.seo_meta_title %></title>
-  <% else %>
-    <title>Ivy CRM</title>
-  <% end %>
+    <title><%= @setting.name%></title>
 <% end %>
 
-<% if  @setting.seo_keywords.present? %>
-  <%= render partial: 'home/seo_keywords', locals: {keyword: @setting.seo_keywords} %>
+<% if  @setting.seo_meta_title.present? %>
+  <%= render partial: 'home/seo_meta_title', locals: {title: @setting.seo_meta_title} %>
 <% end %>
 
 <% if  @setting.seo_description.present? %>

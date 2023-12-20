@@ -12,6 +12,6 @@
 	  <li><%= link_to(t('Friend Links'), friend_links_path)%></li>
 	  <li><%= link_to(t('Download'), download_files_path)%></li>
 	  <li><%= link_to(t('Images'), images_path)%></li>
-	  <li><%= button_to 'Logout', destroy_user_session_path, method: 'delete', data:{turbo_method: 'delete'}  %></li>
+	  <li><%= button_to 'Logout', destroy_user_session_path, method: 'delete', data:{turbo_method: 'delete'}, class: "link"  %></li>
 	</ul>
 </div>

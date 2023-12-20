@@ -1,4 +1,4 @@
-<%= form_with(model: product_category, builder: DaisyFormBuilder) do |form| %>
+<%= form_with(model: product_category, builder: DaisyFormBuilder, html: {data: {controller: 'admin-form'}}) do |form| %>
   <% if product_category.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(product_category.errors.count, "error") %> prohibited this product category from being saved:</h2>
@@ -12,11 +12,10 @@
   <% end %>
 
   <%= form.hidden_field :parent_id %>
-  <%= form.input :name, label: t("Name") %>
-  <%= form.input :key, label: t("key") %>
-  <%= form.input :description, label: t("Description") %>
-  <%= form.input :image, label: t("Image URL") %>
-  <%= form.input :url, label: t("URL") %>
+  <%= form.input :name, label: t("Name"), input_html: {maxlength: 100, data: {'admin-form-target': 'name', 'action': 'admin-form#dasherize'}}  %>
+  <%= form.input :key, label: t("Title") %>
+  <%= form.input :description, label: t("Description"), input_html: {maxlength: 200} %>
+  <%= form.input :url, label: t("URL"), input_html: {data: {'admin-form-target': 'url'}}  %>
   <%= form.input :sorting, label: t("Sorting") %>
   <%= form.input :active, label: t("Active") %>
 

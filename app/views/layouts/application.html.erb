@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= yield :meta_title %>
     <%= yield :description %>
-    <%= yield :keywords %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
      <link
@@ -28,4 +28,9 @@
       <%= render "home/footer" %>
     </main>
   </body>
+  
+  <% if @setting.ga_code.present? %>
+    <%== @setting.ga_code %> 
+  <% end %>
+  
 </html>

@@ -3,15 +3,11 @@
 <% end %>
 
 <% content_for :title do %>
-  <% if  @product.meta_title.present? %>
-    <title><%= @product.meta_title %></title>
-  <% else %>
-    <title><%= @product.name %></title>
-  <% end %>
+	<title><%= @product.name %></title>
 <% end %>
 
 <% if  @product.key.present? %>
-  <%= render partial: 'home/seo_keywords', locals: {keyword: @product.key} %>
+  <%= render partial: 'home/seo_meta_title', locals: {title: @product.key} %>
 <% end %>
 
 <% if  @product.desc.present? %>
