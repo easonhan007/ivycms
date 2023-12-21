@@ -2,6 +2,7 @@ if [ -d ./storage ]; then
   echo "storage directory exists"
 else
   mkdir storage
+  chmod 777 -R storage
 fi
 
 docker stop ivycms

@@ -47,7 +47,7 @@
 
 		<div class="my-4 flex justify-start">
 			<strong class="block font-medium w-1/3"><%= t('Create At')%>:</strong>
-			<p class="w-2/3"> <%= @product_category.created_at %> </p>
+			<p class="w-2/3"> <%= @product_category.created_at.to_fs(:db) %> </p>
 		</div>
 		<div class="modal-action">
 	        <button class="btn">Close</button>
