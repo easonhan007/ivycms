@@ -23,7 +23,7 @@ class ProductCategory < Category
 
   has_many :products, class_name: 'Product', foreign_key: 'category_id'
 
-  after_save :set_level1_path
+  before_save :set_level1_path
   scope :with_children, ->(path) { where("path like ? ", "#{path}%").where(active: true).order("level ASC").order("sorting ASC") }
 
   def build_tree(ignore_status=false)
@@ -82,6 +82,9 @@ class ProductCategory < Category
   end
 
   def set_level1_path
+    Rails.logger.info('xx' * 1000)
+    Rails.logger.info(self[:level])
+
     if self[:level].eql?(1)
       self[:path] = "#{self[:id]}"
     end #if
