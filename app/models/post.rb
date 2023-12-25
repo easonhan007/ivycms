@@ -21,7 +21,7 @@ class Post < ApplicationRecord
 	validates :title, presence: true
 
 	def fragment
-		self[:display_title] || self[:id]
+		self[:display_title].present? ? self[:display_title] : self[:id]
 	end
 
 	private

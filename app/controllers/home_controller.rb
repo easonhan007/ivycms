@@ -89,10 +89,10 @@ class HomeController < ApplicationController
   end
 
   def post
-    if params[:post].to_i.eql?(0)
-      condition = {display_title: params[:post]}
-    else
+    if numberic? params[:post]
       condition = {id: params[:post].to_i}
+    else
+      condition = {display_title: params[:post]}
     end#if
     @post = Post.where(condition).take()
   end
@@ -118,6 +118,10 @@ class HomeController < ApplicationController
 
     def get_post_default_image
       @post_default_img = @limitation[:post][:default_img]
+    end
+
+    def numberic?(the_string)
+      Integer(the_string) rescue false
     end
 
 end

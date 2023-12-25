@@ -28,6 +28,5 @@ class InquiryMailer < ApplicationMailer
 			
 			@delivery_options[:authentication] = 'plain' if @setting.email_authentication
 		 	mail.delivery_method.settings.merge!(@delivery_options)
-			Rails.logger.info(mail.delivery_method.settings)
 		end
 end
