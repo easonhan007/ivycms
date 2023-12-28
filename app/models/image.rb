@@ -20,7 +20,7 @@ class Image < ApplicationRecord
   def correct_content_mime_type
     Rails.logger.warn(content.content_type)
     if content.attached? && !content.content_type.in?(%w(image/png image/jpeg image/gif image/webp))
-      errors.add(:content, 'Must be an image file ')
+      errors.add(:content, 'Must be an image file')
     end
   end
 

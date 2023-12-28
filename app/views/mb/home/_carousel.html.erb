@@ -1,0 +1,14 @@
+<div class="carousel w-full">
+	
+	<% @banners.each do |banner| %>
+		<div id="banner_<%= banner.image%>" class="carousel-item w-full">
+			<img src="<%= banner.url %>" class="w-full" alt="<%= banner.image%>" />
+		</div> 
+	<% end %>
+	
+</div> 
+<div class="flex justify-center w-full py-2 gap-2">
+	<% @banners.each_with_index do |banner, index| %>
+		<a href="#banner_<%= banner.image%>" class="btn btn-xs"><%= index+1 %></a> 
+	<% end %>
+</div>

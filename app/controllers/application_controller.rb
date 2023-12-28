@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 	include Pagy::Backend
 	around_action :switch_locale
-	before_action :load_limitation
+	before_action :load_limitation, :set_template_dir
 
 	def default_url_options
 		{ locale: I18n.locale }
@@ -16,6 +16,15 @@ class ApplicationController < ActionController::Base
 
 		def load_limitation()
 			@limitation = Rails.application.config_for(:limitation)
+		end
+
+		def set_template_dir()
+      @setting = Setting.last
+			if not %w[admin sessions].include?(controller_name)
+				if @setting.theme.present?
+					prepend_view_path Rails.root.join("app", "views", @setting.theme)
+				end #if
+			end #if
 		end
 
 end

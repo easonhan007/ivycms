@@ -1,0 +1,20 @@
+<% content_for :title do %>
+    <title><%= @setting.name%></title>
+<% end %>
+
+<% if  @setting.seo_meta_title.present? %>
+  <%= render partial: 'home/seo_meta_title', locals: {title: @setting.seo_meta_title} %>
+<% end %>
+
+<% if  @setting.seo_description.present? %>
+  <%= render partial: 'home/seo_description', locals: {description: @setting.description} %>
+<% end %>
+
+<% content_for :navi do %>
+  <%= render partial: 'home/navi', locals: {opacity: true} %>
+  <%= render "home/hero" %>
+<% end %>
+
+<%= render "home/featured_products" %>
+
+<%== @setting.raw_block %>

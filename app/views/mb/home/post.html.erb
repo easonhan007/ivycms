@@ -1,0 +1,24 @@
+<% content_for :navi do %>
+    <%= render partial: 'home/navi', locals: {opacity: true} %>
+<% end %>
+
+<% content_for :title do %>
+    <title><%= @post.title %></title>
+<% end %>
+
+<% if  @post.desc.present? %>
+  <%= render partial: 'home/seo_description', locals: {description: @post.desc} %>
+<% end %>
+
+<div class="w-2/3 mx-auto my-4">
+	<h3 class="text-2xl font-semibold text-center p-2"><%= @post.title %></h3>
+	<p class="text-sm text-neutral-400 text-center">
+		<%= t('Updated at') %> <%= @post.updated_at.to_fs(:short) %>
+	</p>
+
+	<img src="<%= @post.image.present? ? @post.image : @post_default_img %>" alt="<%= @post.title %>" class="w-full md:max-h-[32em] object-cover my-4">
+
+	<div class="my-4">
+		<%= @post.content %>
+	</div>
+</div>

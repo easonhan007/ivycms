@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get '/', to: 'admin#index'
       get 'users/index', as: 'users'
 
-      resources :settings, only: [:edit, :update]
+      resources :settings, only: [:edit, :update, :index]
       resources :posts
       resources :download_files
       resources :banners

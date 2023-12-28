@@ -1,0 +1,35 @@
+<footer class="footer p-10 bg-neutral text-neutral-content">
+  <nav>
+    <header class="footer-title"><%= t("Contact") %></header> 
+    <a class="link link-hover" href="mailto:<%= @setting.email %>"><%= @setting.email %></a>
+    <a class="link link-hover" href="tel:<% @setting.phone %>"><%= @setting.phone %></a>
+	<%= @setting.copyright %>
+  </nav> 
+  <nav>
+    <header class="footer-title"><%t("Company")%></header> 
+	<%= link_to t('About us'), about_us_path, class: 'link link-hover'%>
+	<%= link_to t('Contact'), contact_path, class: 'link link-hover'%>
+    <a class="link link-hover">Jobs</a>
+    <a class="link link-hover">Press kit</a>
+  </nav> 
+  <nav>
+    <header class="footer-title"><%= t('Friend Links') %></header> 
+	<% @friend_links.each do |link| %>
+		<%= link_to link.name, link.url, class: "link link-hover"%>	
+	<% end %>
+  </nav> 
+  <nav>
+    <header class="footer-title"><%= t("Send an inquiry")%></header> 
+    <fieldset class="form-control md:w-80">
+		<%= turbo_frame_tag "new_inquiry" do %>
+    
+      <% if @product %>
+  			<%= render partial: 'inquiry_form', locals: {inquiry: @inquiry, product: @product} %>
+      <% else %> 
+  			<%= render partial: 'inquiry_form', locals: {inquiry: @inquiry, product: false} %>
+      <% end %>
+    
+		<% end %>
+    </fieldset>
+  </nav>
+</footer>

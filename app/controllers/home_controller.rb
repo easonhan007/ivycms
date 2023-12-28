@@ -109,7 +109,6 @@ class HomeController < ApplicationController
 
   private 
     def set_layout_data
-      @setting = Setting.last
       @product_categories = ProductCategory.build()
       @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
       @friend_links = FriendLink.with_limitation(@limitation[:homepage][:friend_link_count])

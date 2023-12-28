@@ -1,0 +1,11 @@
+<div class="card lg:card-side bg-base-100 shadow-xl">
+  <figure><img class="md:w-64 md:h-64" src="<%= post.image.present? ? post.image : default_img %>" alt="<%= post.title %>"/></figure>
+  <div class="card-body">
+    <h2 class="card-title"><%= post.title %></h2>
+    <p class="text-sm text-neutral-400"><%= post.updated_at.to_fs(:short) %></p>
+    <p><%= post.desc.truncate(160) %></p>
+    <div class="card-actions justify-end">
+		<%= link_to t('View'), home_post_path(post), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

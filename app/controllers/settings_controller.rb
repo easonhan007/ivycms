@@ -1,5 +1,9 @@
 class SettingsController < AdminController
-  before_action :set_setting, only: %i[ edit update ]
+  before_action :set_setting, only: %i[ edit update index]
+
+  def index
+    redirect_to edit_setting_path(@setting)
+  end
 
   # GET /settings/1/edit
   def edit
@@ -32,8 +36,9 @@ class SettingsController < AdminController
     def setting_params
       params.require(:setting).permit(:name, :url, :logo, :ico, :copyright, :email, :skype, 
         :whatsapp, :phone, :product_per_page, :post_per_page, :recommend_per_page, 
-        :share_code, :email_user_name, :email_passwd, :email_port, :email_smtp, 
+        :share_code, :email_user_name, :email_passwd, :email_port, :email_smtp, :theme,
         :email_receiver, :email_sender, :email_active, :ga_code, :new_arrive_per_page,
-        :email_auto_ssl, :email_authentication, :seo_meta_title, :seo_description, :seo_keywords)
+        :email_auto_ssl, :email_authentication, :seo_meta_title, :seo_description, :seo_keywords,
+        :raw_block)
     end
 end

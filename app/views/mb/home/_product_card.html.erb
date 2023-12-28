@@ -1,0 +1,10 @@
+<div class="card shadow-xl">
+  <figure><img src="<%= product.first_image %>" alt="<%= product.name %>" class="w-[302px] h-[302px] object-cover" /></figure>
+  <div class="card-body">
+    <h2 class="card-title overflow-hidden"><%= product.name %></h2>
+    <p><%= product.desc %></p>
+    <div class="card-actions justify-end">
+      <a class="btn btn-primary" href="<%= home_product_path(product.fragment)%>"><%= t('View') %></a>
+    </div>
+  </div>
+</div>
