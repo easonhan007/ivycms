@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   before_action :set_layout_data
   before_action :get_post_default_image, only: %w(index news about posts contact post)
+  before_action :validate_cloudflare_turnstile, only: %w[inquiry]
+  rescue_from RailsCloudflareTurnstile::Forbidden do
+    @msg = t('Can not send your inquiry')
+    render 'inquiry'
+  end
 
   def index
     @banners = Banner.with_limitation(@limitation[:homepage][:banner])
@@ -24,7 +29,7 @@ class HomeController < ApplicationController
     respond_to do |format|
       if @inquiry.save
         if @setting.can_inquiry?
-          InquiryMailer.with(setting: @setting, inquiry: @inquiry, locale: @locale).client_sent_an_inquiry.deliver_now
+          InquiryMailer.with(setting: @setting, inquiry: @inquiry, locale: @locale).client_sent_an_inquiry.deliver_later
         end
         @msg = t('Your inquiry has been successfully sent.')
       else

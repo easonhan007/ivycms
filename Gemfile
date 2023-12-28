@@ -78,3 +78,4 @@ gem 'email_validator'
 gem 'pagy', '~> 6.2' # omit patch digit
 
 gem "litestack", "~> 0.4.2"
+gem 'rails_cloudflare_turnstile'

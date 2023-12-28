@@ -3,19 +3,19 @@
   <head>
     <%= yield :title %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-visit-control" content="reload">      
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= yield :meta_title %>
     <%= yield :description %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-     <link
+    <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css"
       rel="stylesheet"
       type="text/css" />
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
+    <%= cloudflare_turnstile_script_tag %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -27,6 +27,11 @@
       <%= yield %>
       <%= render "home/footer" %>
     </main>
+  
+    <% if @setting.tawk_code.present? %>
+      <%== @setting.tawk_code %> 
+    <% end %>
+    
   </body>
   
   <% if @setting.ga_code.present? %>

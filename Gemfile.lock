@@ -114,6 +114,11 @@ GEM
     email_validator (2.2.4)
       activemodel
     erubi (1.12.0)
+    faraday (2.8.1)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -220,6 +225,9 @@ GEM
     rails-i18n (7.0.8)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_cloudflare_turnstile (0.1.6)
+      faraday (>= 1.0, < 3.0)
+      rails (>= 6.0, < 8)
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -317,6 +325,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.1.2)
   rails-i18n (~> 7.0.0)
+  rails_cloudflare_turnstile
   redis (>= 4.0.1)
   selenium-webdriver
   sprockets-rails

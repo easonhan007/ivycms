@@ -32,6 +32,10 @@
 #  seo_meta_title       :string
 #  seo_keywords         :string
 #  seo_description      :string
+#  theme                :string
+#  raw_block            :text
+#  cf_site_key          :string
+#  cf_secret_key        :string
 #
 require "test_helper"
 

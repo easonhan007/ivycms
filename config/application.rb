@@ -26,5 +26,6 @@ module Ivycms
     # config.eager_load_paths << Rails.root.join("extras")
     I18n.available_locales = [:en, 'zh-CN'.to_sym]
     config.i18n.default_locale = :en
+    config.active_job.queue_adapter = :litejob
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_070237) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_102258) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -182,6 +182,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_070237) do
     t.string "seo_description"
     t.string "theme"
     t.text "raw_block"
+    t.string "cf_site_key"
+    t.string "cf_secret_key"
+    t.text "tawk_code"
   end
 
   create_table "users", force: :cascade do |t|
