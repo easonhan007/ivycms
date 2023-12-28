@@ -39,8 +39,8 @@
 #
 class Setting < ApplicationRecord
 	validates :name, :url, presence: true
-	validates :email_sender, email: {mode: :strict, require_fqdn: true},  on: :update
-	validates :email_receiver, email: {mode: :strict, require_fqdn: true},  on: :update
+	validates :email_sender, email: {mode: :strict, require_fqdn: true}, if: -> { email_sender.present? }
+	validates :email_receiver, email: {mode: :strict, require_fqdn: true},  if: -> { email_receiver.present? }
 
 	def can_inquiry?
 		self[:email_user_name].present? and self[:email_passwd].present? and
@@ -48,5 +48,6 @@ class Setting < ApplicationRecord
 		self[:email_sender].present? and self[:email_receiver].present? and
 		self[:email_active]
 	end
+
 
 end
