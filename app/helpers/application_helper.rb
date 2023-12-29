@@ -24,7 +24,6 @@ module ApplicationHelper
 				breadcrumbs << second
 			end #case
 		end
-		Rails.logger.info(breadcrumbs)
 
 		items = []
 		tag.div(class: "text-sm breadcrumbs mx-4 mt-2") {

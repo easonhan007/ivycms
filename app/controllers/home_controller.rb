@@ -48,6 +48,7 @@ class HomeController < ApplicationController
     end#if
     @product = Product.where(condition).take()
     @category = @product.category.path_to_category_arr()
+    logger.info(@category)
   end
 
   def category

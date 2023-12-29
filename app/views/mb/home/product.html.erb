@@ -1,3 +1,9 @@
+<% if @setting.share_code.present? %>
+	<% content_for :share_js do %>
+		<%== @setting.share_code %>
+	<% end %>
+<% end %>
+
 <% content_for :navi do %>
     <%= render partial: 'home/navi', locals: {opacity: true} %>
 <% end %>
@@ -40,6 +46,7 @@
 			<div class="font-serif"><%= @product.specs %></div>
 		</div>
 	</div>
+	<div class="sharethis-inline-share-buttons"></div>
 
 	<div class="p-2 my-6">
 		<h3 class="w-2/3 mx-auto text-center my-2 text-4xl"><%= t('Description') %></h3>	
