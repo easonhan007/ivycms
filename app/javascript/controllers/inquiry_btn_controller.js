@@ -1,3 +1,5 @@
+
+// <%= render('home/inquiry_btn') %>
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="inquiry-btn"
