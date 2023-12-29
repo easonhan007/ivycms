@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   before_action :validate_cloudflare_turnstile, only: %w[inquiry]
   rescue_from RailsCloudflareTurnstile::Forbidden do
     @msg = t('Can not send your inquiry')
-    render 'inquiry'
+    redirect_to root_path, notice: @msg
   end
 
   def index
@@ -26,17 +26,18 @@ class HomeController < ApplicationController
     @inquiry.ip = request.remote_ip
     @setting = Setting.last()
 
-    respond_to do |format|
-      if @inquiry.save
-        if @setting.can_inquiry?
-          InquiryMailer.with(setting: @setting, inquiry: @inquiry, locale: @locale).client_sent_an_inquiry.deliver_later
-        end
-        @msg = t('Your inquiry has been successfully sent.')
-      else
-        @msg = t("Can not send your inquiry")
+    if @inquiry.save
+      if @setting.can_inquiry?
+        InquiryMailer.with(setting: @setting, inquiry: @inquiry, locale: @locale).client_sent_an_inquiry.deliver_later
       end
-      format.turbo_stream {}
+      @msg = t('Your inquiry has been successfully sent.')
+    else
+      @msg = t("Can not send your inquiry")
     end
+    redirect_to thank_you_path, notice: @msg
+  end
+
+  def thank_you
   end
 
   def product

@@ -31,11 +31,12 @@
     <% if @setting.tawk_code.present? %>
       <%== @setting.tawk_code %> 
     <% end %>
+
+    <% if @setting.ga_code.present? %>
+      <%== @setting.ga_code %> 
+    <% end %>
     
   </body>
   
-  <% if @setting.ga_code.present? %>
-    <%== @setting.ga_code %> 
-  <% end %>
   
 </html>

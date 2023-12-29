@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get '/downloads', to: 'home#downloads', as: 'home_downloads'
     get '/contact', to: 'home#contact', as: 'contact'
     get '/blog', to: 'home#posts', as: 'home_posts'
+    get '/thank_you', to: 'home#thank_you', as: 'thank_you'
     get '/post/:post', to: 'home#post', as: 'home_post'
     post '/create_inquiry', to: 'home#inquiry', as: 'home_inquiry'
 
