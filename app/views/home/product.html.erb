@@ -1,3 +1,9 @@
+<% if @setting.share_code.present? %>
+	<% content_for :share_js do %>
+		<%== @setting.share_code %>
+	<% end %>
+<% end %>
+
 <% content_for :navi do %>
     <%= render partial: 'home/navi', locals: {opacity: true} %>
 <% end %>
@@ -23,7 +29,7 @@
 			<div class="w-3/4">
 				<img src="<%= @product.first_image %>" alt="" class="w-full h-64 md:h-[32rem] object-cover" data-product-target="primary">
 			</div>
-			<div class="flex flex-col">
+			<div class="hidden md:flex flex-col">
 				<% @product.all_images.to(3).each do |img_src| %>
 					<div class="p-2">
 						<img src="<%= img_src %>" class="w-28 h-28 border border-neutral-300 cursor-pointer" data-action="click->product#switch">
@@ -37,6 +43,8 @@
 			<div class="font-serif"><%= @product.specs %></div>
 		</div>
 	</div>
+
+	<div class="sharethis-inline-share-buttons"></div>
 
 	<div class="p-2 my-6">
 		<h3 class="w-2/3 mx-auto text-center my-2 text-4xl"><%= t('Description') %></h3>	

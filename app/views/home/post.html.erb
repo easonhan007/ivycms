@@ -1,3 +1,9 @@
+<% if @setting.share_code.present? %>
+	<% content_for :share_js do %>
+		<%== @setting.share_code %>
+	<% end %>
+<% end %>
+
 <% content_for :navi do %>
     <%= render partial: 'home/navi', locals: {opacity: true} %>
 <% end %>
@@ -18,6 +24,7 @@
 
 	<img src="<%= @post.image.present? ? @post.image : @post_default_img %>" alt="<%= @post.title %>" class="w-full md:max-h-[32em] object-cover my-4">
 
+	<div class="sharethis-inline-share-buttons"></div>
 	<div class="my-4">
 		<%= @post.content %>
 	</div>
