@@ -3,12 +3,12 @@
     <header class="footer-title"><%= t("Contact") %></header> 
     <a class="link link-hover" href="mailto:<%= @setting.email %>"><%= @setting.email %></a>
     <a class="link link-hover" href="tel:<% @setting.phone %>"><%= @setting.phone %></a>
-	<%= @setting.copyright %>
+  	<%= @setting.copyright %>
   </nav> 
   <nav>
-    <header class="footer-title"><%t("Company")%></header> 
-	<%= link_to t('About us'), about_us_path, class: 'link link-hover'%>
-	<%= link_to t('Contact'), contact_path, class: 'link link-hover'%>
+    <header class="footer-title"><%= t("Company")%></header> 
+  	<%= link_to t('About us'), about_us_path, class: 'link link-hover'%>
+  	<%= link_to t('Contact'), contact_path, class: 'link link-hover'%>
     <a class="link link-hover">Jobs</a>
     <a class="link link-hover">Press kit</a>
   </nav> 
