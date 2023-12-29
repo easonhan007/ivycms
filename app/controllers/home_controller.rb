@@ -40,6 +40,9 @@ class HomeController < ApplicationController
   def thank_you
   end
 
+  def s_page
+  end
+
   def product
     if params[:product].to_i.eql?(0)
       condition = {url: params[:product]}

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|zh-CN/ do
     get '/', to: 'home#index'
     get '/search', to: 'home#search', as: 'home_search'
+    get '/s', to: 'home#s_page', as: 'home_s_page'
     get '/categories', to: 'home#categories'
     get '/category/:category', to: 'home#category', as: 'home_category'
     get '/product/:product', to: 'home#product', as: 'home_product'
