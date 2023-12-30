@@ -21,7 +21,7 @@
           <td><%=  inquiry.ip %></td>
           
           <% if inquiry.product.present? %>
-            <td><%= link_to product.name, product_path(product), class: "link"%></td> 
+            <td><%= link_to inquiry.product.name, product_path(inquiry.product), class: "link link-primary", target: "_blank" %></td> 
           <% else %>
             <td></td>
           <% end %>
