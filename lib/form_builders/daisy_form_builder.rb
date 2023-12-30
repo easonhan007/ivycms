@@ -24,7 +24,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def form_group(method, options = {}, &block)
     # tag.div class: "my-5 flex justify-start items-baseline #{method}" do
-    tag.div class: "my-5 flex justify-start items-baseline" do
+    tag.div class: "my-5 form-control" do
       safe_join [
         block.call,
         hint_text(options[:hint]),
@@ -35,7 +35,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def hint_text(text)
     return if text.nil?
-    tag.small text, class: "text-sm text-gray-600 p-4 hidden lg:block normal-case"
+    tag.p text, class: "text-sm text-info py-2"
   end
 
   def error_text(method)
@@ -60,11 +60,11 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
   end
 
 	def size_string
-		"w-full max-w-sm"
+		"w-full"
 	end
 
 	def label_size_string
-		'w-1/5'
+		'mb-2'
 	end
 
   # Inputs and helpers
@@ -89,12 +89,12 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
 
   def boolean_input(method, options = {})
     form_group(method, options) do
-      # tag.div(class: "custom-control custom-checkbox") do
+      tag.div(class: "flex gap-4") do
         safe_join [
           label(method, options[:label], class: label_size_string),
           check_box(method, merge_input_options({class: "checkbox"}, options[:input_html])),
         ]
-      # end
+      end
     end
   end
 
