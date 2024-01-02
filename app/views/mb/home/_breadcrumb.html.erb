@@ -1,6 +1,6 @@
 <div class="text-sm breadcrumbs">
   <ul>
-	<li><%= link_to t('All Products'), home_products_path %></li>
+	<li><%= link_to t('Home'), root_path %></li>
 	<% @category.each do |item| %>
 		<li><a href="<%= home_category_path item.fragment%>"><%= item.name %></a></li>	
 	<% end %>

@@ -24,15 +24,15 @@
 	<div class="p-2">
 		<%= render partial: 'home/breadcrumb', locals: {category: @category}%>
 	</div>
-	<div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 my-4" data-controller="product">
-		<div class="p-2 flex gap-4">
-			<div class="md:w-3/4 w-full">
+	<div class="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-10" data-controller="product">
+		<div class="p-2 flex flex-col gap-4">
+			<div class="w-full">
 				<img src="<%= @product.first_image %>" alt="" class="w-full h-64 md:h-[32rem] object-cover" data-product-target="primary">
 			</div>
-			<div class="hidden md:flex flex-col">
+			<div class="hidden md:flex justify-center">
 				<% @product.all_images.to(3).each do |img_src| %>
 					<div class="p-2">
-						<img src="<%= img_src %>" class="w-28 h-28 border border-neutral-300 cursor-pointer" data-action="click->product#switch">
+						<img src="<%= img_src %>" class="w-20 h-20 border border-neutral-300 cursor-pointer" data-action="click->product#switch">
 					</div>
 				<% end %>
 			</div>
