@@ -1,0 +1,15 @@
+<h2 class="w-full md:w-1/2 mx-auto font-semibold text-4xl text-center mt-8 mb-4"><%= t("Featuerd Categories") %></h3>
+<div class="my-4 grid grid-flow-row grid-cols-1 md:grid-cols-3 gap-4 md:gap-12 p-8">
+	<% @featured_categories.each do |c| %>
+        <div class="card shadow-xl hover:cursor-pointer" data-controller="card">
+        <figure><img src="<%= c.image.present? ? c.image : c.default_img %>" alt="<%= c.name %>" class="w-[302px] h-[302px] object-cover" /></figure>
+        <div class="card-body">
+            <h2 class="card-title overflow-hidden"><%= c.name %></h2>
+            <p><%= c.description %></p>
+            <div class="card-actions justify-end gap-2">
+            <a class="btn btn-primary" href="<%= home_category_path(c)%>"><%= t('View') %></a>
+            </div>
+        </div>
+        </div>
+	<% end %>
+</div>

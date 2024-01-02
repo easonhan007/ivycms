@@ -8,14 +8,11 @@ class HomeController < ApplicationController
   end
 
   def index
-    @banners = Banner.with_limitation(@limitation[:homepage][:banner])
-    if @banners.blank?
-      @banners = [Banner.new(image: 'default', url: @limitation[:homepage][:default_banner_url])]
-    end
-
     @hot_products = Product.hot(@setting.product_per_page || @limitation[:homepage][:hot_products])
     @recommend_products = Product.hot(@setting.recommend_per_page || @limitation[:homepage][:recommend_products])
     @new_arrive_products = Product.new_arrive(@setting.new_arrive_per_page || @limitation[:homepage][:new_arrive_products])
+    @featured_categories = ProductCategory.order('sorting ASC').limit(@limitation[:homepage][:featured_categories])
+    logger.info(@featured_categories)
 
     @latest_posts = Post.latest(@limitation[:homepage][:post_count])
   end
@@ -123,6 +120,12 @@ class HomeController < ApplicationController
       @navigations = Navigation.with_limitation(@limitation[:global][:navigation_count])
       @friend_links = FriendLink.with_limitation(@limitation[:homepage][:friend_link_count])
       @inquiry = Inquiry.new()
+
+      @banners = Banner.with_limitation(@limitation[:homepage][:banner])
+      if @banners.blank?
+        @banners = [Banner.new(image: 'default', url: @limitation[:homepage][:default_banner_url])]
+      end
+
     end
 
     def get_post_default_image

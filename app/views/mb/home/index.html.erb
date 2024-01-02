@@ -15,7 +15,10 @@
   <%= render "home/hero" %>
 <% end %>
 
-<%= render "home/featured_products" %>
+<div class="md:w-3/4 mx-auto w-full">
+  <%= render "home/featured_categories" %>
+  <%= render "home/featured_products" %>
+</div>
 <%= render partial: 'inquiry_modal', locals: {inquiry: @inquiry} %>
 
 <%== @setting.raw_block %>

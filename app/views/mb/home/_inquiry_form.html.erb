@@ -10,7 +10,7 @@
 		<%= form.telephone_field("phone", required: true, placeholder: t("Phone"), class: "input input-bordered input-sm w-full md:w-1/2 text-neutral-500") %>
 	</div>
   <%= form.text_area("content", required: true, class: "textarea textarea-bordered textarea-sm w-full text-neutral-500", rows: 4) %>
-  <%= form.file_field :avatar, class: "file-input input-sm w-full input-bordered my-2" %>
+  <%= form.file_field :avatar, class: "file-input input-sm w-full  my-2" %>
 
   <%= cloudflare_turnstile %>
   <div class="my-4 flex flex-col items-center">

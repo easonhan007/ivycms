@@ -8,6 +8,9 @@
     <%= csp_meta_tag %>
     <%= yield :meta_title %>
     <%= yield :description %>
+    <% if @setting.g_tag_head.present? %>
+      <%== @setting.g_tag_head%>
+    <% end %>
     <%= yield :share_js %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link
@@ -34,6 +37,10 @@
 
     <% if @setting.ga_code.present? %>
       <%== @setting.ga_code %> 
+    <% end %>
+
+    <% if @setting.g_tag_body.present? %>
+      <%== @setting.g_tag_body%>
     <% end %>
     
   </body>

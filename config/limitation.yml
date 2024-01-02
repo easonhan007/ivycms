@@ -1,15 +1,16 @@
-shared: 
+shared:
   homepage:
     hot_products: 8
     recommend_products: 8
+    featured_categories: 3
     new_arrive_products: 8
     banner: 6
-    default_banner_url: 'https://images.unsplash.com/photo-1641790176913-5b573e7ebacd?q=80&w=1080&h=400&auto=format&fit=crop'
+    default_banner_url: "https://images.unsplash.com/photo-1641790176913-5b573e7ebacd?q=80&w=1080&h=400&auto=format&fit=crop"
     post_count: 3
     friend_link_count: 4
 
-  post: 
-    default_img: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1080&auto=format&fit=crop'
+  post:
+    default_img: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1080&auto=format&fit=crop"
 
   product:
     category_count: 12

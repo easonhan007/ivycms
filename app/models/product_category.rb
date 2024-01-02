@@ -146,4 +146,8 @@ class ProductCategory < Category
     categories.join(" -> ")
   end
 
+  def default_img
+    "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1080&auto=format&fit=crop"
+  end
+
 end

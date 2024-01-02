@@ -12,7 +12,6 @@
         <th><%= t('Recommended') %></th>
         <th><%= t('Active') %></th>
         <th><%= t('Sorting') %></th>
-        <th><%= t('Created At') %></th>
         <th><%= t('Updated At') %></th>
         <th><%= t('Operation') %></th>
         <th></th>
@@ -30,7 +29,6 @@
           <td><%= bool_text product.recommend %></td>
           <td><%= bool_text product.active %></td>
           <td><%= product.sorting %></td>
-          <td><%= time_ago_in_words product.created_at %> <%= t('ago')%></td>
           <td><%= time_ago_in_words product.updated_at %> <%= t('ago')%></td>
           <td> <%= link_to t('Edit'), edit_product_path(product), class: 'link link-info' %> </td>  
           <td><%= render partial: 'admin/confirm_modal', 
