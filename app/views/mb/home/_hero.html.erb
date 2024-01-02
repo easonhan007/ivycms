@@ -5,7 +5,7 @@
     <div class="max-w-md">
       <h1 class="mb-5 text-5xl font-bold"><%= @setting.name%></h1>
       <p class="mb-5"><%= @setting.seo_description %></p>
-      <%= link_to t('Contact Us'), contact_path(), class: "btn btn-primary" %>
+      <%= link_to t('Contact Us'), '#', onclick: "document.querySelector('#inquiry_modal').showModal()", class: "btn btn-primary" %>
     </div>
   </div>
 </div>
