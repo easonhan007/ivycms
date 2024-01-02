@@ -4,12 +4,13 @@
 		<%= form.hidden_field("product_id", value: product.id)%>
 	<% end %>
 	
-	<%= form.email_field("email", required: true, placeholder: t("Email"), class: "input input-sm input-bordered md:min-w-full text-neutral-500") %>
+	<%= form.email_field("email", required: true, placeholder: t("Email"), class: "input input-sm input-bordered w-full text-neutral-500") %>
 	<div class="flex md:justify-between gap-2 my-2 flex-col md:flex-row">
-		<%= form.text_field("name", required: true, class: "input input-bordered input-sm text-neutral-500 w-1/2", placeholder: t('Name')) %>
-		<%= form.telephone_field("phone", required: true, placeholder: t("Phone"), class: "input input-bordered input-sm w-1/2 text-neutral-500") %>
+		<%= form.text_field("name", required: true, class: "input input-bordered input-sm text-neutral-500 w-full md:w-1/2", placeholder: t('Name')) %>
+		<%= form.telephone_field("phone", required: true, placeholder: t("Phone"), class: "input input-bordered input-sm w-full md:w-1/2 text-neutral-500") %>
 	</div>
-  <%= form.text_area("content", required: true, class: "textarea textarea-bordered textarea-sm md:min-w-full text-neutral-500", rows: 4) %>
+  <%= form.text_area("content", required: true, class: "textarea textarea-bordered textarea-sm w-full text-neutral-500", rows: 4) %>
+  <%= form.file_field :avatar, class: "file-input input-sm w-full input-bordered my-2" %>
 
   <%= cloudflare_turnstile %>
   <div class="my-4 flex flex-col items-center">

@@ -45,6 +45,6 @@ class InquiriesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def inquiry_params
-      params.require(:inquiry).permit(:name, :email, :phone, :content, :ip, :product_id)
+      params.require(:inquiry).permit(:name, :email, :phone, :content, :ip, :product_id, :bluescript)
     end
 end

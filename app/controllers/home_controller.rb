@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   end
 
   def inquiry
-    inquiry_params = params.require(:inquiry).permit(:name, :email, :phone, :content, :ip, :product_id)
+    inquiry_params = params.require(:inquiry).permit(:name, :email, :phone, :content, :ip, :product_id, :bluescript)
     @inquiry = Inquiry.new(inquiry_params)
     @inquiry.ip = request.remote_ip
     @setting = Setting.last()

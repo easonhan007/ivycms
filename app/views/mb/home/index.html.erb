@@ -16,5 +16,6 @@
 <% end %>
 
 <%= render "home/featured_products" %>
+<%= render partial: 'inquiry_modal', locals: {inquiry: @inquiry} %>
 
 <%== @setting.raw_block %>

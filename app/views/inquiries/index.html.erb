@@ -9,6 +9,7 @@
         <th>IP</th>
         <th><%= t('Product') %></th>
         <th><%= t('Content') %></th>
+        <th><%= t('Bluescript') %></th>
         <th><%= t('Created At') %></th>
       </tr>
     </thead>
@@ -27,6 +28,13 @@
           <% end %>
           
           <td title="<%= inquiry.content %>"><%=  inquiry.content.truncate(50) %></td>
+          
+          <% if inquiry.bluescript.present? %>
+            <td><%= link_to 'download', inquiry.bluescript, class: 'link' %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          
           <td><%= time_ago_in_words inquiry.created_at %> <%= t('ago')%></td>
         </tr>
       <% end %>

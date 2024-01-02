@@ -14,6 +14,7 @@
 #
 class Inquiry < ApplicationRecord
 	belongs_to :product, optional: true
+	has_one_attached :bluescript
 
 	validates :name, :phone, :content, :email, presence: true
 	validates :email, email: {mode: :strict, require_fqdn: true}
