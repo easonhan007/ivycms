@@ -4,9 +4,9 @@
 		
 		<% specs.split("\n").each do |line| %>
 			<% name, value = line.split(":")%>
-			<tr>
-				<td><%= name %></td>
-				<td><%= value %></td>
+			<tr class="border">
+				<td class="border"><%= name %></td>
+				<td class="border"><%= value %></td>
 			</tr>
 		<% end %>
 		
