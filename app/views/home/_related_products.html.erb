@@ -1,0 +1,8 @@
+<div class="my-4">
+	<h3 class="font-semibold text-xl my-4 text-center"><%= t('Related Products')%></h3>
+	<div class="grid md:grid-flow-col md:grid-cols-4 grid-cols-1">
+		<% related.each do |product| %>
+			<%= render(partial: 'product_card', locals: {product: product}) %>
+		<% end %>
+	</div>
+</div>

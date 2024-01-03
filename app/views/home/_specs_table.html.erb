@@ -1,0 +1,14 @@
+<h3 class="font-semibold my-2"><%= t('Specification')%></h3>
+<% if specs %>
+	<table class="table table-zebra">
+		
+		<% specs.split("\n").each do |line| %>
+			<% name, value = line.split(":")%>
+			<tr>
+				<td><%= name %></td>
+				<td><%= value %></td>
+			</tr>
+		<% end %>
+		
+	</table>
+<% end %>

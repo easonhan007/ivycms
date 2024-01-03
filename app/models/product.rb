@@ -25,7 +25,6 @@
 class Product < ApplicationRecord
 	belongs_to :category, class_name: 'ProductCategory', foreign_key: 'category_id'
 	has_rich_text :content
-	has_rich_text :specs
 
 	before_save :dasherize_url
 

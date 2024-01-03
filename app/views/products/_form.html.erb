@@ -11,7 +11,7 @@
   <% end %>
 
   <%= form.input :category_id, label: t("Category"), collection: ProductCategory.all, text_method: :full_path_text, value_method: :id   %>
-  <%= form.input :name, label: t("Name"), input_html: {maxlength: 100, data: {'admin-form-target': 'name', 'action': 'admin-form#dasherize'}}   %>
+  <%= form.input :name, label: t("Product Name"), input_html: {maxlength: 100, data: {'admin-form-target': 'name', 'action': 'admin-form#dasherize'}}   %>
   <%= form.input :model_string, label: t("Model")  %>
   <%= form.input :key, label: t("Meta Title"), input_html: {maxlength: 100}  %>
   <%= form.input :url, label: "URL", hint: t("For seo purpose"), input_html: {data: {'admin-form-target': 'url'}} %>
@@ -29,7 +29,7 @@
   </div>
   <div class="my-5">
     <label class="my-2 block"><%= t('Product Specs') %></label>
-    <%= form.rich_text_area :specs %>
+    <%= form.input :specs, input_html: {rows: 5, placeholder: "name1: value1\nname2:value2"}, hint: 'will convert to table rows' %>
   </div>
   <div class="my-5">
     <label class="my-2 block"><%= t('Product Detail') %></label>

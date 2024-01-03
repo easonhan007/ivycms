@@ -15,6 +15,7 @@
         <th><%= t('Updated At') %></th>
         <th><%= t('Operation') %></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -37,10 +38,8 @@
               action_obj: product, 
               action_link: link_to(t('Yes'), product_path(product), class: "btn btn-error", data: {turbo_method: 'delete'})}%>
           </td>
-
+          <td><%= link_to t('Preview'), home_product_path(product.fragment), class: "link", target: "_blank"%></td>
         </tr>
-        <%= turbo_frame_tag "view_product" do %>
-        <% end %>
       <% end %>
     </tbody>
   </table>

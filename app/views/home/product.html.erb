@@ -40,7 +40,7 @@
 		<div class="p-2">
 			<h3 class="font-semibold text-2xl"><%= @product.display_name %></h3>
 			<p class="text-sm text-neutral-400"><%= @product.desc %></p>
-			<div class="font-serif"><%= @product.specs %></div>
+			<div><%= render partial: 'specs_table', locals: { specs: @product.specs } %></div>
 		</div>
 	</div>
 
@@ -51,4 +51,5 @@
 		<%= @product.content %>
 	</div>
 	
+	<%= render partial: "home/related_products", locals: {related: @related} %>	
 </div>

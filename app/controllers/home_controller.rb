@@ -48,7 +48,8 @@ class HomeController < ApplicationController
     end#if
     @product = Product.where(condition).take()
     @category = @product.category.path_to_category_arr()
-    logger.info(@category)
+    @related = @product.category.products.where("id != ?", @product.id).order("sorting ASC").limit(@limitation[:product][:related_count])
+    logger.info(@related)
   end
 
   def category
