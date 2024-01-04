@@ -11,14 +11,11 @@ class Image < ApplicationRecord
   has_one_attached :content
   attr_accessor :seq
 
-  # validates :content, presence: true
-
   validate :correct_content_mime_type
 
   private
 
   def correct_content_mime_type
-    Rails.logger.warn(content.content_type)
     if content.attached? && !content.content_type.in?(%w(image/png image/jpeg image/gif image/webp))
       errors.add(:content, 'Must be an image file')
     end

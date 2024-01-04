@@ -20,7 +20,10 @@
 <% end %>
 
 
-<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
+<% unless @latest_posts.blank? %>
+  <%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
+<% end %>
+
 <% unless @recommend_products.blank? %>
   <%= render partial: "home/featured_products", locals: {resouces: @recommend_products, title: t('Featured Products')} %>
 <% end %>

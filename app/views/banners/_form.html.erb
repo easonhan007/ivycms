@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <%= form.input :image, label: t("Image URL") %>
-  <%= form.input :url, label: t("Landing URL") %>
+  <%= form.input :image, label: t("Image Name") %>
+  <%= form.input :url, label: t("Image URL"), input_html: {placeholder: "1665 x 640"} %>
   <%= form.input :sorting, label: t("Sorting") %>
 
-  <div class="my-5">
+  <div class="my-5 flex justify-end">
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
