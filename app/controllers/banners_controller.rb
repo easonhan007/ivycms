@@ -25,7 +25,7 @@ class BannersController < AdminController
 
     respond_to do |format|
       if @banner.save
-        format.html { redirect_to banner_url(@banner), notice: "Banner was successfully created." }
+        format.html { redirect_to banners_path, notice: "Banner was successfully created." }
         format.json { render :show, status: :created, location: @banner }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class BannersController < AdminController
   def update
     respond_to do |format|
       if @banner.update(banner_params)
-        format.html { redirect_to banner_url(@banner), notice: "Banner was successfully updated." }
+        format.html { redirect_to banners_path, notice: "Banner was successfully updated." }
         format.json { render :show, status: :ok, location: @banner }
       else
         format.html { render :edit, status: :unprocessable_entity }

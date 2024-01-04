@@ -7,7 +7,7 @@
 <% end %>
 
 <% if  @setting.seo_description.present? %>
-  <%= render partial: 'home/seo_description', locals: {description: @setting.description} %>
+  <%= render partial: 'home/seo_description', locals: {description: @setting.seo_description} %>
 <% end %>
 
 <% content_for :navi do %>
