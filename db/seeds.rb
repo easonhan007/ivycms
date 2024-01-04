@@ -8,8 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-default_email = "ivy_admin@ethanhan.cc"
-default_passwd = "ethanhan.cc"
+default_email = ENV['USER_EMAIL'] || "ivy_admin@ethanhan.cc"
+default_passwd = ENV['USER_PASS'] || "ethanhan.cc"
 if not User.exists?(email: default_email)
 	puts "Creating admin, #{default_email}"
 	User.create(email: default_email, password: default_passwd, password_confirmation: default_passwd)	
