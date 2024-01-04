@@ -1,4 +1,10 @@
 <div id="<%= dom_id product %>">
+  <div class="my-2 flex gap-4">
+    <% product.all_images.each do |img| %>
+      <img src="<%= img %>" alt="" class="w-48 h-48"> 
+    <% end %>
+  </div>
+
   <p class="my-5 flex gap-4">
     <strong class="block font-medium mb-1 w-64"><%= t('Category')%>:</strong>
     <%= product.category.name %>
@@ -32,11 +38,6 @@
   </p>
 
   <p class="my-5 flex gap-4">
-    <strong class="block font-medium mb-1 w-64"><%= t('New arrive')%>:</strong>
-    <%= bool_text product.new_arrive %>
-  </p>
-
-  <p class="my-5 flex gap-4">
     <strong class="block font-medium mb-1 w-64"><%= t('Sorting')%>:</strong>
     <%= product.sorting %>
   </p>
@@ -46,15 +47,24 @@
     <%= bool_text product.hot %>
   </p>
 
-
   <p class="my-5 flex gap-4">
     <strong class="block font-medium mb-1 w-64"><%= t('Active')%>:</strong>
     <%= bool_text product.active %>
   </p>
 
+  <p class="my-5 flex gap-4">
+    <strong class="block font-medium mb-1 w-64"><%= t('Recommend')%>:</strong>
+    <%= bool_text product.recommend %>
+  </p>
+
+  <p class="my-5 flex gap-4">
+    <strong class="block font-medium mb-1 w-64"><%= t('New Arrive')%>:</strong>
+    <%= bool_text product.new_arrive %>
+  </p>
+
   <p class="my-5">
     <strong class="block font-medium mb-1 w-64"><%= t('Specs')%>:</strong>
-    <%= product.specs %>
+		<%= render partial: 'home/specs_table', locals: { specs: product.specs } %>
   </p>
 
   <p class="my-5 flex gap-4">

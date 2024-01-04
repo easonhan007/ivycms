@@ -35,6 +35,11 @@
     <%= form.rich_text_area :content %>
   </div>
 
+  <%= form.input :active, label: t("Active")  %>
+  <%= form.input :hot, label: t("Hot")  %>
+  <%= form.input :new_arrive, label: t("New Arrive")  %>
+  <%= form.input :recommend, label: t("Recommend")  %>
+
   <div class="my-5">
     <%= form.submit class: "btn btn-primary" %>
   </div>

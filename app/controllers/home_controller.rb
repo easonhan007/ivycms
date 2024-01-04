@@ -9,10 +9,9 @@ class HomeController < ApplicationController
 
   def index
     @hot_products = Product.hot(@setting.product_per_page || @limitation[:homepage][:hot_products])
-    @recommend_products = Product.hot(@setting.recommend_per_page || @limitation[:homepage][:recommend_products])
+    @recommend_products = Product.recommend(@setting.recommend_per_page || @limitation[:homepage][:recommend_products])
     @new_arrive_products = Product.new_arrive(@setting.new_arrive_per_page || @limitation[:homepage][:new_arrive_products])
     @featured_categories = ProductCategory.order('sorting ASC').limit(@limitation[:homepage][:featured_categories])
-    logger.info(@featured_categories)
 
     @latest_posts = Post.latest(@limitation[:homepage][:post_count])
   end
