@@ -19,8 +19,16 @@
   <% end %>
 <% end %>
 
-<%= render "home/featured_products" %>
-<%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')} %>
-<%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')} %>
-<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
 
+<%= render partial: "home/latest_contents", locals: {resouces: @latest_posts, title: t('Latest Blog')} %>
+<% unless @recommend_products.blank? %>
+  <%= render partial: "home/featured_products", locals: {resouces: @recommend_products, title: t('Featured Products')} %>
+<% end %>
+
+<% unless @hot_products.blank? %>
+  <%= render partial: "home/product_cards", locals: {products: @hot_products, title: t('Hot Product')} %>
+<% end %>
+
+<% unless @new_arrive_products.blank? %>
+  <%= render partial: "home/product_cards", locals: {products: @new_arrive_products, title: t('New Arrive')} %>
+<% end %>
