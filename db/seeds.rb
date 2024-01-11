@@ -43,16 +43,18 @@ system_navigations = {
 	blog: '/blog',
 }
 
-sort = 1
-system_navigations.each do |k, v|
-	navi_name = k.to_s.titleize()
-	puts "Creating navigation item #{navi_name}"
-	n = Navigation.find_or_create_by(name: navi_name)
-	n.link = v
-	n.sorting = sort
-	n.save
-	sort += 1
-end
+if Navigation.count.eql?(0)
+	sort = 1
+	system_navigations.each do |k, v|
+		navi_name = k.to_s.titleize()
+		puts "Creating navigation item #{navi_name}"
+		n = Navigation.find_or_create_by(name: navi_name)
+		n.link = v
+		n.sorting = sort
+		n.save
+		sort += 1
+	end
+end #if
 
 post_categories = ['About Us', 'News', 'Contact Us', 'Blog']
 post_categories.each do |category|

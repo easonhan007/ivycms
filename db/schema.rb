@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_091948) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_11_075750) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -187,6 +187,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_091948) do
     t.text "tawk_code"
     t.text "g_tag_head"
     t.text "g_tag_body"
+    t.integer "latest_post_count", default: 3
   end
 
   create_table "users", force: :cascade do |t|

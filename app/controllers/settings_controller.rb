@@ -39,6 +39,7 @@ class SettingsController < AdminController
         :share_code, :email_user_name, :email_passwd, :email_port, :email_smtp, :theme,
         :email_receiver, :email_sender, :email_active, :ga_code, :new_arrive_per_page,
         :email_auto_ssl, :email_authentication, :seo_meta_title, :seo_description, :seo_keywords,
-        :raw_block, :cf_secret_key, :cf_site_key, :tawk_code, :g_tag_head, :g_tag_body)
+        :raw_block, :cf_secret_key, :cf_site_key, :tawk_code, :g_tag_head, :g_tag_body,
+        :latest_post_count)
     end
 end

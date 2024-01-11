@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     @new_arrive_products = Product.new_arrive(@setting.new_arrive_per_page || @limitation[:homepage][:new_arrive_products])
     @featured_categories = ProductCategory.order('sorting ASC').limit(@limitation[:homepage][:featured_categories])
 
-    @latest_posts = Post.latest(@limitation[:homepage][:post_count])
+    @latest_posts = Post.latest(@setting.latest_post_count || @limitation[:homepage][:post_count])
   end
 
   def inquiry
