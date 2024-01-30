@@ -19,6 +19,7 @@
 #
 class Category < ApplicationRecord
 	validates :name, presence: true
+  scope :active, ->{ where(active: true) }
 
 	def fragment
 		(self[:url].present? and not self[:url].blank?) ? self[:url] : self[:id]

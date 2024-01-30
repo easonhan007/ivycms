@@ -114,6 +114,18 @@ class HomeController < ApplicationController
     end
   end
 
+  def sitemap
+    defualt_order = 'created_at DESC'
+
+    @posts = Post.order(defualt_order)
+    @products = Product.active.order(defualt_order)
+    @product_categories = ProductCategory.active.order(defualt_order)
+    @post_categories = PostCategory.active.order(defualt_order)
+
+    @about = PostCategory.where(name: 'About Us').take()
+    @contact = PostCategory.where(name: 'Contact Us').take()
+  end
+
   private 
     def set_layout_data
       @product_categories = ProductCategory.build()
@@ -135,5 +147,6 @@ class HomeController < ApplicationController
     def numberic?(the_string)
       Integer(the_string) rescue false
     end
+
 
 end

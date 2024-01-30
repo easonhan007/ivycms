@@ -1,0 +1,66 @@
+<% base_url = Rails.env.production? ? @setting.url : 'http://localhost:3000' %>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc><%= base_url %></loc>
+    <lastmod><%= @setting.updated_at.strftime("%Y-%m-%d") %></lastmod>
+  </url>
+
+
+  <% @product_categories.each do |pc| %>
+    <url>
+      <loc><%= base_url %>/category/<%= pc.url.blank? ? pc.id : pc.url %></loc>
+      <lastmod><%= pc.updated_at.strftime("%Y-%m-%d") %></lastmod>
+    </url>
+  <% end %>
+	
+	<% unless @categories.blank? %>
+	    <url>
+	      <loc><%= base_url %>/categories/<></loc>
+	      <lastmod><%= @categories.first.updated_at.strftime("%Y-%m-%d") %></lastmod>
+	    </url>
+	<% end %>
+
+	<% unless @products.blank? %>
+	    <url>
+	      <loc><%= base_url %>/products</loc>
+	      <lastmod><%= @products.first.updated_at.strftime("%Y-%m-%d") %></lastmod>
+	    </url>
+		  <% @products.each do |product| %>
+		    <url>
+		      <loc><%= base_url %>/product/<%= product.fragment %></loc>
+		      <lastmod><%= product.updated_at.strftime("%Y-%m-%d") %></lastmod>
+		    </url>
+		  <% end %>
+	<% end %>
+
+	<% unless @posts.blank? %>
+	    <url>
+	      <loc><%= base_url %>/blog</loc>
+	      <lastmod><%= @posts.first.updated_at.strftime("%Y-%m-%d") %></lastmod>
+	    </url>
+		  <% @posts.each do |post| %>
+		    <url>
+		      <loc><%= base_url %>/post/<%= post.fragment %></loc>
+		      <lastmod><%= post.updated_at.strftime("%Y-%m-%d") %></lastmod>
+		    </url>
+		  <% end %>
+	<% end %>
+
+	<% if @about.present? %>
+	    <url>
+	      <loc><%= base_url %>/about</loc>
+	      <lastmod><%= @about.updated_at.strftime("%Y-%m-%d") %></lastmod>
+	    </url>
+	<% end %>
+	
+	
+	<% if @contact.present? %>
+    <url>
+      <loc><%= base_url %>/contact</loc>
+      <lastmod><%= @contact.updated_at.strftime("%Y-%m-%d") %></lastmod>
+    </url>
+	<% end %>
+	
+
+</urlset>
