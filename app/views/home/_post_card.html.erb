@@ -1,5 +1,5 @@
 <div class="card md:min-h-24 bg-base-100 shadow-xl image-full">
-  <figure><img src="<%= post.image.present? ? post.image : default_img %>" alt="<%= post.title %>" class="object-cover h-48 min-w-full" /></figure>
+  <figure><img src="<%= post.image.present? ? post.image : default_img %>" alt="<%= post.title %> " class="object-cover h-48 min-w-full" loading="lazy" /></figure>
   <div class="card-body">
     <h2 class="card-title"><%= post.title %></h2>
     <p><%= post.desc %></p>
