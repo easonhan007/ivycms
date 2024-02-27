@@ -9,7 +9,7 @@
       <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
 	  	<% @navigations.each do |nav| %>
 			<% if not nav.name.downcase.eql?('categories') %>
-				<li><%= link_to nav.name, insert_locale(nav.link) %></li>
+				<li><%= link_to nav.name, insert_locale(nav.link), class: "text-slate-600 dark:text-gray-200" %></li>
 			<% else %>
 				<li>
 					<%= link_to nav.name, insert_locale(nav.link) %>
