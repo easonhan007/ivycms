@@ -15,15 +15,18 @@
  */
 
 .top {
-	--offset: 100px; 
+  --offset: 100px;
 
-	position: fixed;
-	bottom: 0px;      
-	right: 5px; 
-	margin-top: calc(100vh + var(--offset));
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  margin-top: calc(100vh + var(--offset));
 }
 
-
 .trix-content ul {
-	list-style-type: disc;
+  list-style-type: disc;
+}
+
+.trix-content ol {
+  list-style-type: decimal;
 }

@@ -2,13 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="admin-form"
 export default class extends Controller {
-  static targets = ["name", "url", "title", "displayTitle"]
+  static targets = ["name", "url", "title", "displayTitle", "md", "richEditor", "mdEditor"]
 
   connect() {
-    console.log(this.element)
-    console.log(this.element.querySelector("#post_category_name"));
-    console.log(this.titleTarget);
-    console.log(this.displayTitleTarget);
+    if(this.mdTarget.checked) {
+      this.richEditorTarget.classList.add("hidden");
+    } else {
+      this.mdEditorTarget.classList.add("hidden");
+    }
   }
 
   dasherize() {
@@ -19,5 +20,10 @@ export default class extends Controller {
     if(this.hasTitleTarget && this.hasDisplayTitleTarget) {
       this.displayTitleTarget.value = this.titleTarget.value.split(" ").join("-");
     }
+  }
+
+  toggleEditor() {
+    this.richEditorTarget.classList.toggle("hidden");
+    this.mdEditorTarget.classList.toggle("hidden");
   }
 }

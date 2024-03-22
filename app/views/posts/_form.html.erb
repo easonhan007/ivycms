@@ -15,7 +15,13 @@
   <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos", input_html: {data: {'admin-form-target': 'displayTitle'}}  %>
   <%= form.input :desc, label: t("Description"), input_html: {maxlength: 200}  %>
   <%= form.input :image, label: t("Image URL")  %>
-  <%= form.rich_text_area :content %>
+  <%= form.input :is_md, label: t("Use markdown editor"), input_html: {data: {'admin-form-target': 'md', 'action': 'admin-form#toggleEditor'}}  %>
+  <div data-admin-form-target="mdEditor">
+    <%= form.input :md_content, label: t("Markdown here"), input_html: {rows: 10} %>
+  </div>
+  <div data-admin-form-target="richEditor">
+    <%= form.rich_text_area :content %>
+  </div>
 
   <div class="my-5">
     <%= form.submit class: "btn btn-primary" %>

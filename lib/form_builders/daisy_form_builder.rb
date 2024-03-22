@@ -92,7 +92,7 @@ class DaisyFormBuilder < ActionView::Helpers::FormBuilder
       tag.div(class: "flex gap-4") do
         safe_join [
           label(method, options[:label], class: label_size_string),
-          check_box(method, merge_input_options({class: "checkbox"}, options[:input_html])),
+          check_box(method, merge_input_options({class: "checkbox dark:border-gray-100 dark:text-gray-100"}, options[:input_html])),
         ]
       end
     end

@@ -26,6 +26,12 @@
 
 	<div class="sharethis-inline-share-buttons"></div>
 	<div class="my-4">
-		<%= @post.content %>
+		<% if @post.is_md? %>
+			<div class="prose lg:prose-lg dark:prose-invert">
+				<%== to_md @post.md_content %>
+			</div>
+		<% else %>
+			<%= @post.content %>
+		<% end %>
 	</div>
 </div>
