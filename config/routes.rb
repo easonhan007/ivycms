@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     get '/post/:post', to: 'home#post', as: 'home_post'
     post '/create_inquiry', to: 'home#inquiry', as: 'home_inquiry'
 
+    #api
+    post '/api/posts', to: 'api#create_post'
+
     scope :admin do
       get '/', to: 'admin#index'
       get 'users/index', as: 'users'

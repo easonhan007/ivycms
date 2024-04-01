@@ -11,6 +11,8 @@
 #  category_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  is_md         :boolean          default(FALSE)
+#  md_content    :text
 #
 
 one:

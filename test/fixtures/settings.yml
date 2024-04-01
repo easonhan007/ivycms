@@ -36,6 +36,10 @@
 #  raw_block            :text
 #  cf_site_key          :string
 #  cf_secret_key        :string
+#  tawk_code            :text
+#  g_tag_head           :text
+#  g_tag_body           :text
+#  latest_post_count    :integer          default(3)
 #
 
 one:

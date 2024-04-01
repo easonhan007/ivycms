@@ -11,6 +11,8 @@
 #  category_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  is_md         :boolean          default(FALSE)
+#  md_content    :text
 #
 class Post < ApplicationRecord
 	belongs_to :category, class_name: 'PostCategory', foreign_key: :category_id
@@ -19,6 +21,7 @@ class Post < ApplicationRecord
 
 	scope :latest, ->(count) {order('created_at DESC').limit(count)}
 	validates :title, presence: true
+	validates :display_title, uniqueness: true
 
 	def fragment
 		self[:display_title].present? ? self[:display_title] : self[:id]
