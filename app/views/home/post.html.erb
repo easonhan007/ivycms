@@ -18,6 +18,12 @@
 
 <div class="md:w-2/3 mx-auto w-full my-4 px-4">
 	<h3 class="text-2xl font-semibold text-center p-2"><%= @post.title %></h3>
+	<% if current_user %>
+		<div class="flex justify-center my-4 gap-4">
+			<%= button_to "Destroy", post_path(@post), method: :delete, class: "btn btn-danger" %>
+			<%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+		</div>
+	<% end %>
 	<p class="text-sm text-neutral-400 text-center">
 		<%= t('Updated at') %> <%= @post.updated_at.to_fs(:short) %>
 	</p>

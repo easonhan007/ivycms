@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
     #api
     post '/api/posts', to: 'api#create_post'
+    post '/api/post_exists', to: 'api#post_exists'
 
     scope :admin do
       get '/', to: 'admin#index'

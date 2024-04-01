@@ -7,13 +7,17 @@ class ApiController < ActionController::API
     post.category_id = 4
 
     if post.save
-      logger.info(post)
       render json: { status: 'SUCCESS', message: 'Post created successfully', data: post }, status: :created
     else
       render json: { status: 'ERROR', message: 'Post creation failed', data: post.errors }, status: :unprocessable_entity
     end
   end
 
+  def post_exists
+    slug = slug_params[:slug]
+    res = Post.where(display_title: slug).exists? 
+    render json: { status: 'SUCCESS', message: 'Post created successfully', data: res }, status: :created
+  end
 
   private
     def verify_api_key
@@ -29,6 +33,10 @@ class ApiController < ActionController::API
 
     def post_params
       params.require(:post).permit(:title, :md_content, :desc, :image, :display_title, :content)
+    end
+
+    def slug_params
+      params.require(:post).permit(:slug)
     end
 
 end
