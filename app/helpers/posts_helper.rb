@@ -5,4 +5,5 @@ module PostsHelper
 			tag.img class: "w-32 h-24", alt: post.desc, src: img_url
 		}
 	end
+
 end

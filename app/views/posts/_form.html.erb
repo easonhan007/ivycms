@@ -12,6 +12,7 @@
   <% end %>
   <%= form.input :category_id, label: t("Category"), collection: PostCategory.all, text_method: :name, value_method: :id %>
   <%= form.input :title, label: t("Title"), input_html: {maxlength: 100}, input_html: {data: {'admin-form-target': 'title', 'action': 'admin-form#dasherize'}}  %>
+  <%= form.input :is_draft, label: t("Is draft") %>
   <%= form.input :display_title, label: t("Display Title"), hint: "title displays in url, for seo purpos", input_html: {data: {'admin-form-target': 'displayTitle'}}  %>
   <%= form.input :desc, label: t("Description"), input_html: {maxlength: 200}  %>
   <%= form.input :image, label: t("Image URL")  %>

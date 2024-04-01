@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_22_113259) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_123330) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -127,6 +127,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_113259) do
     t.datetime "updated_at", null: false
     t.boolean "is_md", default: false
     t.text "md_content"
+    t.boolean "is_draft", default: false
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 

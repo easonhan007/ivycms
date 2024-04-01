@@ -66,7 +66,7 @@ class PostsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :desc, :content, :image, :display_title, :category_id, :is_md, :md_content)
+      params.require(:post).permit(:title, :desc, :content, :image, :display_title, :category_id, :is_md, :md_content, :is_draft)
     end
 
     def set_preview_link

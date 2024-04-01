@@ -87,7 +87,7 @@ class HomeController < ApplicationController
 
   def posts
     @category = PostCategory.where(name: 'Blog').take()
-    @pagy, @resouces = pagy @category.posts.order('created_at DESC')
+    @pagy, @resouces = pagy @category.posts.published.order('created_at DESC')
     render 'home/post_category'
   end
 
@@ -101,7 +101,7 @@ class HomeController < ApplicationController
     else
       condition = {display_title: params[:post]}
     end#if
-    @post = Post.where(condition).take()
+    @post = Post.published.where(condition).take()
   end
 
   def search

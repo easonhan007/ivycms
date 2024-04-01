@@ -20,11 +20,20 @@ class Post < ApplicationRecord
 	before_save :dasherize_display_title
 
 	scope :latest, ->(count) {order('created_at DESC').limit(count)}
+	scope :published, ->{where(is_draft: false)}
 	validates :title, presence: true
 	validates :display_title, uniqueness: true
 
 	def fragment
 		self[:display_title].present? ? self[:display_title] : self[:id]
+	end
+
+	def title_with_status
+		if self[:is_draft]
+			"[Draft] 📖 #{self[:title]}"
+		else
+			self[:title]
+		end #if
 	end
 
 	private

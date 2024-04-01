@@ -4,10 +4,11 @@
     <thead>
       <tr>
         <th><%= t('Image') %></th>
+        <th><%= t('Posted') %></th>
+        <th><%= t('Is md') %></th>
         <th><%= t('Title') %></th>
         <th><%= t('Category') %></th>
         <th><%= t('Created At') %></th>
-        <th><%= t('Updated At') %></th>
         <th><%= t('Operation') %></th>
         <th></th>
       </tr>
@@ -16,10 +17,11 @@
       <% @posts.each do |post| %>
         <tr>
           <%= post_image(post) %>
+          <td> <%= post.is_draft? ? "❌" : "✅" %> </td>
+          <td> <%= post.is_md? ? "✅" : "❌" %> </td>
           <td><%= link_to post.title, post_path(post), class: "link link-primary" %> </td>
           <td><%= post.category.name %></td>
-          <td><%= time_ago_in_words post.created_at %> <%= t('ago')%></td>
-          <td><%= time_ago_in_words post.updated_at %> <%= t('ago')%></td>
+          <td title="<%= post.created_at.to_fs%>"><%= time_ago_in_words post.created_at %> <%= t('ago')%></td>
           <td> <%= link_to t('Edit'), edit_post_path(post), class: 'link link-info' %> </td>  
           <td><%= render partial: 'admin/confirm_modal', 
             locals: {
