@@ -19,8 +19,9 @@ class Post < ApplicationRecord
 	has_rich_text :content
 	before_save :dasherize_display_title
 
-	scope :latest, ->(count) {order('created_at DESC').limit(count)}
 	scope :published, ->{where(is_draft: false)}
+	scope :latest, ->(count) {published.order('created_at DESC').limit(count)}
+
 	validates :title, presence: true
 	validates :display_title, uniqueness: true
 
