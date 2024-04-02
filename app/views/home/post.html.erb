@@ -32,12 +32,12 @@
 
 	<div class="sharethis-inline-share-buttons"></div>
 	<div class="my-4">
-		<% if @post.is_md? %>
-			<div class="prose lg:prose-lg dark:prose-invert">
+		<div class="prose lg:prose-lg dark:prose-invert mx-auto">
+			<% if @post.is_md? %>
 				<%== to_md @post.md_content %>
-			</div>
-		<% else %>
-			<%= @post.content %>
-		<% end %>
+			<% else %>
+				<%= @post.content %>
+			<% end %>
+		</div>
 	</div>
 </div>
