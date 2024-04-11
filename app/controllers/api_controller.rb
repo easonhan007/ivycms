@@ -4,6 +4,7 @@ class ApiController < ActionController::API
   def create_post
     post = Post.new(post_params)
     post.is_md = true
+    post.is_draft = true
     post.category_id = 4
     
     origin = Post.where(display_title: post_params[:display_title].strip())
@@ -38,7 +39,7 @@ class ApiController < ActionController::API
     end
 
     def post_params
-      params.require(:post).permit(:title, :md_content, :desc, :image, :display_title, :content)
+      params.require(:post).permit(:title, :md_content, :desc, :image, :display_title, :content, :is_md)
     end
 
     def slug_params
