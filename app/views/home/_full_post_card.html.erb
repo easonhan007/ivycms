@@ -3,7 +3,7 @@
   <div class="card-body lg:w-32">
     <h2 class="card-title"><%= post.title %></h2>
     <p class="text-sm text-neutral-400"><%= post.updated_at.to_fs(:short) %></p>
-    <p><%= post.desc.truncate(160) %></p>
+    <p><%= post.desc.truncate(160) rescue nil %></p>
     <div class="card-actions justify-end">
 		<%= link_to t('View'), home_post_path(post.fragment), class: "btn btn-primary" %>
     </div>
