@@ -6,7 +6,7 @@ class ApiController < ActionController::API
     post.is_md = true
     post.category_id = 4
     
-    origin = Post.where(display_title: post_params[:display_title])
+    origin = Post.where(display_title: post_params[:display_title].strip())
     if origin.exists?
       render json: { status: 'SKIPPED', message: 'Post exists', data: origin.take }, status: :created
       return 
